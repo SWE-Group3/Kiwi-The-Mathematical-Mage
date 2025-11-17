@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5f6v431hkhik"]
+
+[ext_resource type="Texture2D" uid="uid://kks8rfsrnx4b" path="res://art/Mystical_Purple_Sky.jpg" id="1_eqhe0"]
+[ext_resource type="Texture2D" uid="uid://catgncy65dwol" path="res://art/tree-background.jpg" id="1_k77ap"]
+[ext_resource type="Texture2D" uid="uid://vkh811kit38i" path="res://art/wood-background.jpg" id="3_haeiw"]
+[ext_resource type="Texture2D" uid="uid://cf3nh4knighna" path="res://art/fireball_spell_card.png" id="4_b5kf5"]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1151.0
+offset_bottom = 647.0
+texture = ExtResource("1_eqhe0")
+expand_mode = 2
+
+[node name="Topbar" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 50.0
+offset_bottom = 1201.0
+rotation = -1.5707964
+texture = ExtResource("1_k77ap")
+expand_mode = 1
+
+[node name="Pause" type="Button" parent="Background/Topbar"]
+layout_mode = 0
+offset_left = 44.99995
+offset_top = 1112.0
+offset_right = 66.999954
+offset_bottom = 1151.0
+rotation = 1.5707964
+theme_override_font_sizes/font_size = 22
+text = "II"
+
+[node name="BottomBarPt1" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_top = 551.0
+offset_right = 20.0
+offset_bottom = 1702.0
+rotation = -1.5707964
+texture = ExtResource("1_k77ap")
+expand_mode = 1
+
+[node name="BottomBarPt2" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_top = 551.0
+offset_right = 1151.0
+offset_bottom = 651.0
+texture = ExtResource("3_haeiw")
+expand_mode = 1
+
+[node name="Spell1" type="Button" parent="Background/BottomBarPt2"]
+layout_mode = 0
+offset_left = 1051.0
+offset_top = 5.0
+offset_right = 1219.0
+offset_bottom = 253.0
+scale = Vector2(0.38, 0.38)
+icon = ExtResource("4_b5kf5")
+
+[node name="Spell2" type="Button" parent="Background/BottomBarPt2"]
+layout_mode = 0
+offset_left = 851.0
+offset_top = 5.0
+offset_right = 1019.0
+offset_bottom = 253.0
+scale = Vector2(0.38, 0.38)
+icon = ExtResource("4_b5kf5")
+
+[node name="Spell3" type="Button" parent="Background/BottomBarPt2"]
+layout_mode = 0
+offset_left = 951.0
+offset_top = 5.0
+offset_right = 1119.0
+offset_bottom = 253.0
+scale = Vector2(0.38, 0.38)
+icon = ExtResource("4_b5kf5")
+
+[node name="Spell4" type="Button" parent="Background/BottomBarPt2"]
+layout_mode = 0
+offset_left = 751.0
+offset_top = 5.0
+offset_right = 919.0
+offset_bottom = 253.0
+scale = Vector2(0.38, 0.38)
+icon = ExtResource("4_b5kf5")
