@@ -25,10 +25,10 @@ bg_color = Color(0, 0.38039216, 0.7764706, 1)
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_i2arf")
 
-[node name="Pause" type="CanvasLayer" parent="."]
+[node name="upgrade" type="CanvasLayer" parent="."]
+layer = 3
 
-[node name="PauseMenu" parent="Pause" instance=ExtResource("2_1kil2")]
-offset_right = 3.9899902
+[node name="UpgradeMenu" parent="upgrade" instance=ExtResource("8_5cvvu")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_b5kf5")
@@ -71,7 +71,6 @@ offset_bottom = 2386.0
 rotation = -1.5707964
 texture = ExtResource("1_k77ap")
 expand_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="BottomBarPt2" type="TextureRect" parent="BottomBar"]
 offset_top = 786.0
@@ -79,14 +78,12 @@ offset_right = 1600.0
 offset_bottom = 899.0
 texture = ExtResource("3_haeiw")
 expand_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BottomBar"]
 offset_left = 10.0
 offset_top = 783.0
 offset_right = 267.0
 offset_bottom = 895.0
-metadata/_edit_use_anchors_ = true
 
 [node name="HealthLabel" type="Label" parent="BottomBar/VBoxContainer"]
 layout_mode = 2
@@ -123,7 +120,6 @@ offset_bottom = 892.0
 theme_override_font_sizes/font_size = 23
 text = "Upgrades
 "
-metadata/_edit_use_anchors_ = true
 
 [node name="StartWave" type="Button" parent="BottomBar"]
 offset_left = 587.0
@@ -134,7 +130,6 @@ theme_override_font_sizes/font_size = 23
 text = "Start
 Wave
 "
-metadata/_edit_use_anchors_ = true
 
 [node name="Control" type="Control" parent="BottomBar"]
 layout_mode = 3
@@ -144,7 +139,6 @@ offset_top = 768.0
 offset_right = 1104.0
 offset_bottom = 937.0
 script = ExtResource("5_hvuor")
-metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BottomBar/Control"]
 layout_mode = 0
@@ -173,7 +167,6 @@ offset_right = 2172.0
 offset_bottom = 1042.0
 scale = Vector2(0.4, 0.4)
 theme_override_constants/separation = 100
-metadata/_edit_use_anchors_ = true
 
 [node name="Spell1" type="Button" parent="BottomBar/Spells"]
 layout_mode = 2
@@ -191,14 +184,16 @@ icon = ExtResource("4_b5kf5")
 layout_mode = 2
 icon = ExtResource("4_b5kf5")
 
-[node name="upgrade" type="CanvasLayer" parent="."]
+[node name="Pause" type="CanvasLayer" parent="."]
+layer = 3
 
-[node name="UpgradeMenu" parent="upgrade" instance=ExtResource("8_5cvvu")]
+[node name="PauseMenu" parent="Pause" instance=ExtResource("2_1kil2")]
+offset_right = 3.9899902
 
 [connection signal="pressed" from="Topbar/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="Topbar/Pause" to="Pause/PauseMenu" method="_on_pause_pressed"]
-[connection signal="pressed" from="BottomBar/OpenUpgrade" to="Pause/PauseMenu" method="_on_open_upgrade_pressed"]
 [connection signal="pressed" from="BottomBar/OpenUpgrade" to="upgrade/UpgradeMenu" method="_on_open_upgrade_pressed"]
+[connection signal="pressed" from="BottomBar/OpenUpgrade" to="Pause/PauseMenu" method="_on_open_upgrade_pressed"]
 [connection signal="pressed" from="BottomBar/Spells/Spell1" to="." method="_on_spell_1_pressed"]
 [connection signal="pressed" from="BottomBar/Spells/Spell2" to="." method="_on_spell_2_pressed"]
 [connection signal="pressed" from="BottomBar/Spells/Spell3" to="." method="_on_spell_3_pressed"]

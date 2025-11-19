@@ -1,21 +1,23 @@
 extends Control
 
+@onready var isopen = false
+
 func _ready():
 	$AnimationPlayer.play("RESET")
 
 func resume():
-	#get_tree().paused = false
+	isopen = false
 	$AnimationPlayer.play_backwards("blur")
 	
 func open():
-	#get_tree().paused = true
+	isopen = true
 	$AnimationPlayer.play("blur")
 
 
 func testTab():
-	if Input.is_action_just_pressed("upgrade") and get_tree().paused == false:
+	if Input.is_action_just_pressed("upgrade") and isopen == false:
 		open()
-	elif Input.is_action_just_pressed("upgrade") and get_tree().paused == true:
+	elif Input.is_action_just_pressed("upgrade") and isopen == true:
 		resume()
 		
 
