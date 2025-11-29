@@ -1,27 +1,23 @@
-extends Control
-
-@onready var problem_label = $VBoxContainer/ProblemLabel
-@onready var answer_input = $VBoxContainer/AnswerInput
-@onready var submit_button = $VBoxContainer/SubmitButton
-@onready var feedback_label = $VBoxContainer/FeedbackLabel
+extends VBoxContainer
 
 var a: int
 var b: int
 
 func _ready() -> void:
 	_focus_answer_box()
-	feedback_label.visible = false
+	$FeedbackLabel.visible = false
 	generate_problem()
 
 func generate_problem() -> void:
 	a = randi() % 10 + 1
 	b = randi() % 10 + 1
-	problem_label.text = "What is %d + %d ?" % [a, b]
-	answer_input.text = ""
+	$ProblemLabel.text = "What is %d + %d ?" % [a, b]
+	$AnswerTextField.text = ""
 	_focus_answer_box()
 
 func _on_submit_button_pressed() -> void:
-	var user_answer = int(answer_input.text)
+	var feedback_label = $FeedbackLabel
+	var user_answer = int($AnswerTextField.text)
 	var correct_answer = a + b
 	if user_answer == correct_answer:
 		feedback_label.text = "Correct!"
@@ -39,10 +35,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		_on_submit_button_pressed()
 		_focus_answer_box()
-		print(answer_input.has_focus())
+		print($AnswerTextField.has_focus())
 
 func _focus_answer_box() -> void:
-	#await get_tree().process_frame
-	answer_input.grab_focus()
+	$AnswerTextField.grab_focus()
 	# or generate a new problem after correct
-	# if user_answer == correct_answer:
