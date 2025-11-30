@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://vkh811kit38i" path="res://art/wood_background.jpg" id="2_l5kym"]
 [ext_resource type="Script" uid="uid://cywdjwc3avenj" path="res://problem_container.gd" id="3_l5kym"]
 [ext_resource type="Texture2D" uid="uid://cf3nh4knighna" path="res://art/fireball_spell_card.png" id="4_jn6nv"]
-[ext_resource type="PackedScene" uid="uid://he4ph2su6ioo" path="res://pause_menu.tscn" id="6_hsgek"]
+[ext_resource type="PackedScene" uid="uid://cgkj3ydnksxti" path="res://pause_menu.tscn" id="6_hsgek"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5kf5"]
 bg_color = Color(0, 0, 0, 1)
@@ -202,3 +202,4 @@ layout_mode = 2
 icon = ExtResource("4_jn6nv")
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_hsgek")]
+visible = false

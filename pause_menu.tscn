@@ -1,47 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgkj3ydnksxti"]
+[gd_scene load_steps=2 format=3 uid="uid://cgkj3ydnksxti"]
 
 [ext_resource type="Script" uid="uid://oiqhei2f8poa" path="res://pause_menu.gd" id="1_qb7bn"]
-[ext_resource type="Shader" uid="uid://cda0eor1qtote" path="res://pause_menu.gdshader" id="2_nwcfo"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_05uyy"]
-shader = ExtResource("2_nwcfo")
-shader_parameter/lod = 0.0
-
-[sub_resource type="Animation" id="Animation_nwcfo"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FilterPanel:material")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [SubResource("ShaderMaterial_05uyy")]
-}
-
-[sub_resource type="Animation" id="Animation_hdmo1"]
-resource_name = "blur"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FilterPanel:material")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [SubResource("ShaderMaterial_05uyy")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_05uyy"]
-_data = {
-&"RESET": SubResource("Animation_nwcfo"),
-&"blur": SubResource("Animation_hdmo1")
-}
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -51,17 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 script = ExtResource("1_qb7bn")
-
-[node name="FilterPanel" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_05uyy")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="TitleLabel" type="Label" parent="."]
 layout_mode = 1
@@ -69,9 +18,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -106.0
-offset_top = 40.0
+offset_top = 100.0
 offset_right = 106.0
-offset_bottom = 85.0
+offset_bottom = 145.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 32
 text = "Game Paused"
@@ -85,9 +34,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -270.0
-offset_top = -240.0
+offset_top = -180.0
 offset_right = 270.0
-offset_bottom = 240.0
+offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -95,28 +44,20 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
-text = "Resume
-"
+text = "Resume"
 
 [node name="OptionsButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
-text = "Options
-"
+text = "Options"
 
-[node name="QuitGameButton" type="Button" parent="ButtonContainer"]
+[node name="ExitButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
-text = "Quit
-"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_05uyy")
-}
+text = "Exit"
 
 [connection signal="pressed" from="ButtonContainer/ResumeButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="ButtonContainer/OptionsButton" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="ButtonContainer/QuitGameButton" to="." method="_on_quit_to_menu_pressed"]
+[connection signal="pressed" from="ButtonContainer/ExitButton" to="." method="_on_quit_to_menu_pressed"]
