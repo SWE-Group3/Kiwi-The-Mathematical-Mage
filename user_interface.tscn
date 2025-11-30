@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c7r0acxyw82o4" path="res://user_interface.gd" id="1_r3lf1"]
 [ext_resource type="Texture2D" uid="uid://vkh811kit38i" path="res://art/wood_background.jpg" id="2_l5kym"]
 [ext_resource type="Script" uid="uid://cywdjwc3avenj" path="res://problem_container.gd" id="3_l5kym"]
-[ext_resource type="Texture2D" uid="uid://cf3nh4knighna" path="res://art/fireball_spell_card.png" id="4_jn6nv"]
+[ext_resource type="Texture2D" uid="uid://cf3nh4knighna" path="res://art/fireball_card.png" id="4_jn6nv"]
 [ext_resource type="PackedScene" uid="uid://cgkj3ydnksxti" path="res://pause_menu.tscn" id="6_hsgek"]
 [ext_resource type="PackedScene" uid="uid://b33tyie7nt1ll" path="res://upgrade_menu.tscn" id="7_hsgek"]
 
