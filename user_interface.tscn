@@ -203,3 +203,5 @@ icon = ExtResource("4_jn6nv")
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_hsgek")]
 visible = false
+
+[connection signal="pressed" from="TopHUD/PauseButton" to="PauseMenu" method="_on_pause_button_pressed"]
