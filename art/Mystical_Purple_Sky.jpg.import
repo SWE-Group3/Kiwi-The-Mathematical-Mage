@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://kks8rfsrnx4b"
-path="res://.godot/imported/Mystical_Purple_Sky.jpg-275c43cbf82f2f36dbd9f87aed508e60.ctex"
+path="res://.godot/imported/mystical_purple_sky.jpg-d4daefb18f44950575a57ba0c577f7c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Mystical_Purple_Sky.jpg"
-dest_files=["res://.godot/imported/Mystical_Purple_Sky.jpg-275c43cbf82f2f36dbd9f87aed508e60.ctex"]
+source_file="res://art/mystical_purple_sky.jpg"
+dest_files=["res://.godot/imported/mystical_purple_sky.jpg-d4daefb18f44950575a57ba0c577f7c4.ctex"]
 
 [params]
 
