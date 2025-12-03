@@ -1,8 +1,5 @@
 extends Node
 
-@export var mob_scene: PackedScene
-var score
-
 func _on_pause_pressed() -> void:
 	print("Pause Pressed")
 
@@ -18,5 +15,6 @@ func _on_spell_3_pressed() -> void:
 func _on_spell_4_pressed() -> void:
 	print("Casting Spell 4")
 
-func _on_spawn_timer_timeout():
-	$EnemyPath.add_child(mob_scene.instantiate())
+func _on_spawn_timer_timeout() -> void:
+	var scene: Resource = preload("res://predator_path_follow.tscn")
+	$EnemyPath.add_child(scene.instantiate())

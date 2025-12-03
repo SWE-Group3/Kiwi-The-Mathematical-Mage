@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://b5f6v431hkhik"]
+[gd_scene load_steps=5 format=4 uid="uid://b5f6v431hkhik"]
 
 [ext_resource type="Script" uid="uid://cfvf6f48oieqy" path="res://game.gd" id="1_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://b70kgle12qbtf" path="res://user_interface.tscn" id="2_7jktm"]
-[ext_resource type="PackedScene" uid="uid://bju2cxlfny0x7" path="res://predator_path_follow.tscn" id="2_fc0e3"]
 [ext_resource type="TileSet" uid="uid://8et0wkid5sxn" path="res://art/tileset.tres" id="3_hve3p"]
 
 [sub_resource type="Curve2D" id="Curve2D_feb5d"]
@@ -13,7 +12,6 @@ point_count = 8
 
 [node name="Game" type="Node"]
 script = ExtResource("1_j5wjh")
-mob_scene = ExtResource("2_fc0e3")
 
 [node name="UserInterface" parent="." instance=ExtResource("2_7jktm")]
 
