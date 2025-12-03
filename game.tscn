@@ -8,7 +8,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_feb5d"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1275, 80, 0, 0, 0, 0, 977, 79, 0, 0, 0, 0, 976, 304, 0, 0, 0, 0, 497, 306, 0, 0, 0, 0, 494, 434, 0, 0, 0, 0, 110, 429, 0, 0, 0, 0, 110, 301, 0, 0, 0, 0, 46, 303)
+"points": PackedVector2Array(0, 0, 0, 0, 1273.6318, 80, 0, 0, 0, 0, 971.1443, 80, 0, 0, 0, 0, 971.1443, 304, 0, 0, 0, 0, 493.53232, 304, 0, 0, 0, 0, 493.53232, 432, 0, 0, 0, 0, 111.44279, 432, 0, 0, 0, 0, 111.44279, 304, 0, 0, 0, 0, 47.761192, 304)
 }
 point_count = 8
 
@@ -27,13 +27,12 @@ tile_set = ExtResource("3_hve3p")
 wait_time = 5.0
 
 [node name="EnemyPath" type="Path2D" parent="."]
-position = Vector2(-0.074855804, 1.2225342)
-scale = Vector2(1.0016273, 0.9971831)
+scale = Vector2(1.005, 1)
 curve = SubResource("Curve2D_feb5d")
 
 [node name="Enemy1spawn" type="PathFollow2D" parent="EnemyPath"]
-position = Vector2(1275, 80)
-rotation = -3.138237
+position = Vector2(1273.6318, 80)
+rotation = 3.1415927
 script = ExtResource("5_7jktm")
 speed = 15.0
 
