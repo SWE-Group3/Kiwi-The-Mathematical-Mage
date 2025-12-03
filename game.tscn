@@ -37,6 +37,4 @@ rotation = -3.138237
 script = ExtResource("5_7jktm")
 speed = 15.0
 
-[node name="Mob1" parent="EnemyPath/Enemy1spawn" instance=ExtResource("2_fc0e3")]
-
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

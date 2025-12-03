@@ -23,17 +23,21 @@ func _on_spell_4_pressed() -> void:
 
 
 func _on_mob_timer_timeout():
-	var follower := PathFollow2D.new()
-	follower.set_script(load("res://follower_script.gd"))
+	#var follower := $Enemy1spawn
+	#follower.set_script(load("res://follower_script.gd"))
 	
-	var mob := mob_scene.instantiate()
+	var mob = mob_scene.instantiate()
+	var mob_spawn_location = $EnemyPath/Enemy1spawn
+	mob_spawn_location.progress_ratio = 0
+	
+	mob.position = mob_spawn_location.position
+	add_child(mob)
 
 	# Add follower to your path
-	$EnemyPath.add_child(follower)
+	#$EnemyPath.add_child(follower)
 
 	# Add mob as a child of the follower
-	follower.add_child(mob)
+	#follower.add_child(mob)
 
 	# Ensure mob starts at center of follower
-	mob.position = Vector2.ZERO
-	mob.rotation = 0
+	
