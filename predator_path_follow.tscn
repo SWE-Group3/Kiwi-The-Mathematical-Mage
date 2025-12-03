@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bju2cxlfny0x7"]
+
+[ext_resource type="PackedScene" uid="uid://d3h8b546qk6i5" path="res://predator.tscn" id="1_5200i"]
+[ext_resource type="Script" uid="uid://bir625li608yq" path="res://predator_path_follow.gd" id="1_c46rv"]
+
+[node name="PredatorPathFollow" type="PathFollow2D"]
+rotates = false
+loop = false
+script = ExtResource("1_c46rv")
+
+[node name="Predator" parent="." instance=ExtResource("1_5200i")]
