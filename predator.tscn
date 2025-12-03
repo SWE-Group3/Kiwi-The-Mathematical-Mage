@@ -46,7 +46,7 @@ script = ExtResource("1_addl1")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_eln2t")
 animation = &"move"
-frame_progress = 0.7863967
+autoplay = "move"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_u54e6")
