@@ -15,6 +15,10 @@ run/main_scene="uid://drq6hkx2win3t"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SpellManager="*res://spell_manager.gd"
+
 [display]
 
 window/size/viewport_width=1280

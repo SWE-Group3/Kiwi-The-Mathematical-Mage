@@ -1,5 +1,5 @@
 extends Node
-
+var selectedSpell := 0
 func _ready() -> void:
 	randomize()
 
@@ -7,16 +7,24 @@ func _on_pause_pressed() -> void:
 	print("Pause Pressed")
 
 func _on_spell_1_pressed() -> void:
+	SpellManager.select_spell("fireball")  # Changed
 	print("Casting Spell 1")
 
 func _on_spell_2_pressed() -> void:
+	SpellManager.select_spell("ice_blast")  # Changed
 	print("Casting Spell 2")
 
 func _on_spell_3_pressed() -> void:
+	SpellManager.select_spell("lightning")  # Changed
 	print("Casting Spell 3")
 
 func _on_spell_4_pressed() -> void:
+	SpellManager.select_spell("fireball")  # Changed (or add a 4th spell)
 	print("Casting Spell 4")
+	
+
+		
+		
 
 func _on_spawn_timer_timeout() -> void:
 	var pickEnemy = randi_range(1, 3)
