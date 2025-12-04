@@ -25,6 +25,7 @@ func resume():
 	
 func _on_quit_to_menu_pressed() -> void:
 	resume()
+	Global.reset()
 	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 func _process(_delta: float) -> void:
