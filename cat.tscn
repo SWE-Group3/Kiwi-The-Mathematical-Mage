@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://iigwf2vmdyx7"]
+
+[ext_resource type="Texture2D" uid="uid://cthj4h1t1ynbk" path="res://art/cat.png" id="2_52fj1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52fj1"]
+atlas = ExtResource("2_52fj1")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fl1u"]
+atlas = ExtResource("2_52fj1")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eln2t"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52fj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fl1u")
+}],
+"loop": true,
+"name": &"move",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u54e6"]
+size = Vector2(39, 27)
+
+[node name="Cat" type="Area2D"]
+metadata/_edit_horizontal_guides_ = [187.0]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_eln2t")
+animation = &"move"
+autoplay = "move"
+frame_progress = 0.7326914
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u54e6")
