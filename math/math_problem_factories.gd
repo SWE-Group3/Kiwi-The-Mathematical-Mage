@@ -94,4 +94,48 @@ static func _gen_add_sub_fraction_problem(difficulty: int, is_sub: bool) -> Math
 		return IntegerMathProblem.new(question, answer, mana_reward)
 		
 		
+static func multiplication_problem_factory(difficulty: int) -> MathProblem:
+	if difficulty <= 20:
+		return _gen_int_times_int_problem(difficulty)
+	return _gen_int_times_int_problem(difficulty)
 	
+static func _gen_int_times_int_problem(difficulty: int) -> MathProblem:
+	var top_num_digits: int
+	var bottom_num_digits: int
+	if difficulty <= 20:
+		# early waves are easy multiplication table review
+		top_num_digits = 1
+		bottom_num_digits = 1
+	else:
+		# starts with heavy bias towards multiplying by single digit
+		# but then as the game goes on, becomes slightly biased towards 
+		# 2 by 2
+		var prob_2_digits_bottom = ((difficulty + 30.) / 200.)
+		bottom_num_digits = 2 if randf() < prob_2_digits_bottom else 1
+		if bottom_num_digits == 2:
+			top_num_digits = 2
+		else:
+			@warning_ignore( "integer_division" )
+			top_num_digits = difficulty / 20 + 2 - (randi() & 1)
+	var top: int
+	var bottom: int
+	# just make it a multiplication table instead if top and bottom is 1.
+	# it's more interesting.
+	if top_num_digits == 1 && bottom_num_digits == 1:
+		top = randi_range(1, 12)
+		bottom = randi_range(1, 12)
+		
+	else:
+		@warning_ignore("narrowing_conversion")
+		top = randi_range(pow(10., top_num_digits - 1), pow(10., top_num_digits) - 1)
+		@warning_ignore("narrowing_conversion")
+		bottom = randi_range(1, pow(10., bottom_num_digits) - 1)
+	
+	var answer = top * bottom
+	
+	var question: String
+	var reward: int
+	
+	question = "%d × %d = ?" % [top, bottom]
+	reward = top_num_digits * 5 + 5
+	return IntegerMathProblem.new(question, answer, reward)

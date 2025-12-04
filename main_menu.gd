@@ -18,6 +18,7 @@ func _on_subtraction_button_pressed() -> void:
 	Global.math_problem_factory = MathProblemFactories.add_sub_problem_factory.bind(true);
 
 func _on_multiplication_button_pressed() -> void:
+	Global.math_problem_factory = MathProblemFactories.multiplication_problem_factory
 	return
 
 func _on_division_button_pressed() -> void:
