@@ -210,3 +210,4 @@ visible = false
 
 [connection signal="pressed" from="TopHUD/PauseButton" to="PauseMenu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="BottomHUD/UpgradesButton" to="UpgradeMenu" method="show"]
+[connection signal="pressed" from="BottomHUD/StartWaveButton" to="." method="_on_start_wave_button_pressed"]

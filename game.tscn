@@ -25,11 +25,10 @@ point_count = 8
 [node name="Game" type="Node"]
 script = ExtResource("1_j5wjh")
 
-[node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [node name="UserInterface" parent="." instance=ExtResource("2_7jktm")]
+
+[node name="SpawnTimer" type="Timer" parent="UserInterface"]
+wait_time = 5.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -45,4 +44,4 @@ curve = SubResource("Curve2D_fc0e3")
 [node name="DogPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_7jktm")
 
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="UserInterface/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
