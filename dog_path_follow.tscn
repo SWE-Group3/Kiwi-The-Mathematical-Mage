@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bogmcxvlayws3"]
+
+[ext_resource type="Script" path="res://predator_path_follow.gd" id="1_4xl2x"]
+[ext_resource type="PackedScene" uid="uid://jrot652c5pwh" path="res://dog.tscn" id="2_4xl2x"]
+
+[node name="DogPathFollow" type="PathFollow2D"]
+rotates = false
+loop = false
+script = ExtResource("1_4xl2x")
+speed = 25.0
+
+[node name="Dog" parent="." instance=ExtResource("2_4xl2x")]

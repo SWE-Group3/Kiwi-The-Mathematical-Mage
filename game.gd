@@ -1,5 +1,8 @@
 extends Node
 
+func _ready() -> void:
+	randomize()
+
 func _on_pause_pressed() -> void:
 	print("Pause Pressed")
 
@@ -14,3 +17,24 @@ func _on_spell_3_pressed() -> void:
 
 func _on_spell_4_pressed() -> void:
 	print("Casting Spell 4")
+
+func _on_spawn_timer_timeout() -> void:
+	var pickEnemy = randi_range(1, 3)
+	var pickPath = randi_range(1,3)
+
+	var _enemy: Resource
+	match pickEnemy:
+		1:
+			_enemy = preload("res://stoat_path_follow.tscn")
+		2:
+			_enemy = preload("res://cat_path_follow.tscn")
+		3:
+			_enemy = preload("res://dog_path_follow.tscn")
+	
+	match pickPath:
+		1: 
+			$TopPath.add_child(_enemy.instantiate())
+		2:
+			$MiddlePath.add_child(_enemy.instantiate())
+		3: 
+			$BottomPath.add_child(_enemy.instantiate())

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctkalcoy01pse"]
+
+[ext_resource type="Script" path="res://predator_path_follow.gd" id="1_lcpm7"]
+[ext_resource type="PackedScene" uid="uid://iigwf2vmdyx7" path="res://cat.tscn" id="2_lcpm7"]
+
+[node name="CatPathFollow" type="PathFollow2D"]
+rotates = false
+loop = false
+script = ExtResource("1_lcpm7")
+speed = 50.0
+
+[node name="Cat" parent="." instance=ExtResource("2_lcpm7")]
