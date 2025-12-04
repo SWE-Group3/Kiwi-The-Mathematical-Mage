@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Predator" load_steps=2 format=3 uid="uid://ik38fyw00yh1"]
+
+[sub_resource type="GDScript" id="GDScript_uusdg"]
+script/source = "class_name Predator
+extends Resource
+"
+
+[resource]
+resource_local_to_scene = true
+script = SubResource("GDScript_uusdg")
