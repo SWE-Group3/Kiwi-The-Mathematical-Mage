@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3h8b546qk6i5"]
 
-[ext_resource type="Script" path="res://predator.gd" id="1_addl1"]
-[ext_resource type="Texture2D" uid="uid://citvb201b84sx" path="res://art/stoatsprite.png" id="2_8or0i"]
+[ext_resource type="Script" uid="uid://b8y358e02k8ip" path="res://predator.gd" id="1_addl1"]
+[ext_resource type="Texture2D" uid="uid://citvb201b84sx" path="res://art/stoat.png" id="2_8or0i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_addl1"]
 atlas = ExtResource("2_8or0i")
@@ -39,7 +39,6 @@ animations = [{
 size = Vector2(41, 23)
 
 [node name="Stoat" type="Area2D"]
-collision_mask = 0
 script = ExtResource("1_addl1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
