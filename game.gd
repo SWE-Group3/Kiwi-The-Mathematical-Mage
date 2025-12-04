@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 func _on_pause_pressed() -> void:
 	print("Pause Pressed")

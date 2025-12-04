@@ -1,0 +1,212 @@
+[gd_scene load_steps=11 format=3 uid="uid://b70kgle12qbtf"]
+
+[ext_resource type="Texture2D" uid="uid://catgncy65dwol" path="res://art/tree_background.jpg" id="1_o5bw5"]
+[ext_resource type="Script" uid="uid://c7r0acxyw82o4" path="res://user_interface.gd" id="1_r3lf1"]
+[ext_resource type="Texture2D" uid="uid://vkh811kit38i" path="res://art/wood_background.jpg" id="2_l5kym"]
+[ext_resource type="Script" uid="uid://cywdjwc3avenj" path="res://problem_container.gd" id="3_l5kym"]
+[ext_resource type="Texture2D" uid="uid://cf3nh4knighna" path="res://art/fireball_card.png" id="4_jn6nv"]
+[ext_resource type="PackedScene" uid="uid://cgkj3ydnksxti" path="res://pause_menu.tscn" id="6_hsgek"]
+[ext_resource type="PackedScene" uid="uid://b33tyie7nt1ll" path="res://upgrade_menu.tscn" id="7_hsgek"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5kf5"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvuor"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2arf"]
+bg_color = Color(0, 0.38039216, 0.7764706, 1)
+
+[node name="UserInterface" type="CanvasLayer"]
+script = ExtResource("1_r3lf1")
+
+[node name="TopHUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+
+[node name="BackgroundTexture" type="TextureRect" parent="TopHUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_o5bw5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="WaveLabel" type="Label" parent="TopHUD"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 168.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 32
+text = "Wave 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseButton" type="Button" parent="TopHUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "II"
+metadata/_edit_use_anchors_ = true
+
+[node name="BottomHUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -144.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BorderTexture" type="TextureRect" parent="BottomHUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_o5bw5")
+expand_mode = 1
+
+[node name="BackgroundTexture" type="TextureRect" parent="BottomHUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l5kym")
+expand_mode = 1
+
+[node name="ResourceBarContainer" type="VBoxContainer" parent="BottomHUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -120.0
+offset_right = 272.0
+offset_bottom = -16.0
+grow_vertical = 0
+
+[node name="HealthLabel" type="Label" parent="BottomHUD/ResourceBarContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Egg Health:"
+
+[node name="HealthBar" type="ProgressBar" parent="BottomHUD/ResourceBarContainer"]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_b5kf5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hvuor")
+value = 50.0
+
+[node name="ManaLabel" type="Label" parent="BottomHUD/ResourceBarContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Mana:  7"
+
+[node name="ManaBar" type="ProgressBar" parent="BottomHUD/ResourceBarContainer"]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_b5kf5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i2arf")
+max_value = 10.0
+value = 7.0
+
+[node name="UpgradesButton" type="Button" parent="BottomHUD"]
+layout_mode = 0
+offset_left = 306.0
+offset_top = 32.0
+offset_right = 486.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 32
+text = "Upgrades
+"
+
+[node name="StartWaveButton" type="Button" parent="BottomHUD"]
+layout_mode = 0
+offset_left = 518.0
+offset_top = 32.0
+offset_right = 698.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 32
+text = "Start Wave
+"
+
+[node name="ProblemContainer" type="VBoxContainer" parent="BottomHUD"]
+layout_mode = 0
+offset_left = 730.0
+offset_top = 20.0
+offset_right = 930.0
+offset_bottom = 140.0
+alignment = 1
+script = ExtResource("3_l5kym")
+metadata/_edit_use_anchors_ = true
+
+[node name="ProblemLabel" type="Label" parent="BottomHUD/ProblemContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="AnswerTextField" type="LineEdit" parent="BottomHUD/ProblemContainer"]
+layout_mode = 2
+
+[node name="EnterButton" type="Button" parent="BottomHUD/ProblemContainer"]
+layout_mode = 2
+text = "Enter"
+
+[node name="FeedbackLabel" type="Label" parent="BottomHUD/ProblemContainer"]
+layout_mode = 2
+
+[node name="SpellContainer" type="HBoxContainer" parent="BottomHUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -318.0
+offset_top = -114.0
+offset_right = 654.0
+offset_bottom = 134.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/separation = 32
+
+[node name="SpellButton1" type="Button" parent="BottomHUD/SpellContainer"]
+layout_mode = 2
+icon = ExtResource("4_jn6nv")
+
+[node name="SpellButton2" type="Button" parent="BottomHUD/SpellContainer"]
+layout_mode = 2
+icon = ExtResource("4_jn6nv")
+
+[node name="SpellButton3" type="Button" parent="BottomHUD/SpellContainer"]
+layout_mode = 2
+icon = ExtResource("4_jn6nv")
+
+[node name="SpellButton4" type="Button" parent="BottomHUD/SpellContainer"]
+layout_mode = 2
+icon = ExtResource("4_jn6nv")
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_hsgek")]
+visible = false
+
+[node name="UpgradeMenu" parent="." instance=ExtResource("7_hsgek")]
+visible = false
+
+[connection signal="pressed" from="TopHUD/PauseButton" to="PauseMenu" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="BottomHUD/UpgradesButton" to="UpgradeMenu" method="show"]

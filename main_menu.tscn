@@ -1,125 +1,109 @@
-[gd_scene load_steps=5 format=3 uid="uid://drq6hkx2win3t"]
+[gd_scene load_steps=3 format=3 uid="uid://drq6hkx2win3t"]
 
 [ext_resource type="Script" uid="uid://ctlvh5xp0b35v" path="res://main_menu.gd" id="1_i26rj"]
-[ext_resource type="Texture2D" uid="uid://cgpj3dasxadii" path="res://art/content.png" id="2_eiy7p"]
-[ext_resource type="Shader" uid="uid://cda0eor1qtote" path="res://pause_menu.gdshader" id="3_h7a2f"]
+[ext_resource type="Texture2D" uid="uid://cgpj3dasxadii" path="res://art/ai_kiwi.png" id="2_eiy7p"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qoqlk"]
-shader = ExtResource("3_h7a2f")
-shader_parameter/lod = 0.0
-
-[node name="Menu" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 1.0
-offset_right = 2.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i26rj")
 
-[node name="BackgroundTextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = -4.0
-offset_top = -85.0
-offset_right = 1612.0
-offset_bottom = 939.0
-texture = ExtResource("2_eiy7p")
-
-[node name="SelectionVBoxContainer" type="VBoxContainer" parent="."]
+[node name="BackgroundTexture" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.059027776
-anchor_top = 0.8425926
-anchor_right = 0.3142361
-anchor_bottom = 1.0154321
-offset_left = -44.444443
-offset_top = -658.3333
-offset_right = -52.77777
-offset_bottom = -613.8889
-grow_vertical = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_eiy7p")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="MainButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -90.0
+offset_right = 344.0
+offset_bottom = 90.0
+grow_vertical = 2
+alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="StartButton" type="Button" parent="SelectionVBoxContainer"]
+[node name="StartButton" type="Button" parent="MainButtonContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 focus_neighbor_top = NodePath("../QuitButton")
-theme_override_font_sizes/font_size = 30
-text = "Start
-"
+theme_override_font_sizes/font_size = 32
+text = "Start"
 
-[node name="OptionsButton" type="Button" parent="SelectionVBoxContainer"]
+[node name="OptionsButton" type="Button" parent="MainButtonContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 32
 text = "Options"
 
-[node name="QuitButton" type="Button" parent="SelectionVBoxContainer"]
+[node name="QuitButton" type="Button" parent="MainButtonContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../StartButton")
-theme_override_font_sizes/font_size = 30
-text = "Quit
-"
+theme_override_font_sizes/font_size = 32
+text = "Quit"
 
-[node name="ProblemStyleVBoxContainer" type="VBoxContainer" parent="."]
-material = SubResource("ShaderMaterial_qoqlk")
+[node name="ProblemButtonContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.059027776
-anchor_top = 0.8425926
-anchor_right = 0.3142361
-anchor_bottom = 1.0154321
-offset_left = 1055.5555
-offset_top = -658.3333
-offset_right = 1047.2222
-offset_bottom = -113.888916
-grow_vertical = 0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -344.0
+offset_top = -270.0
+offset_right = -24.0
+offset_bottom = 270.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="ProblemStyleVBoxContainer"]
+[node name="TitleLabel" type="Label" parent="ProblemButtonContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 32
 text = "Problem Style"
 horizontal_alignment = 1
 
-[node name="AdditionButton" type="Button" parent="ProblemStyleVBoxContainer"]
+[node name="AdditionButton" type="Button" parent="ProblemButtonContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-focus_neighbor_top = NodePath("../MultiplicationButton")
-theme_override_font_sizes/font_size = 30
+focus_neighbor_top = NodePath("../DivisionButton")
+theme_override_font_sizes/font_size = 32
 text = "Addition
-+
-"
++"
 
-[node name="SubtractionButton" type="Button" parent="ProblemStyleVBoxContainer"]
+[node name="SubtractionButton" type="Button" parent="ProblemButtonContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 32
 text = "Subtraction
 -"
 
-[node name="MultiplicationButton" type="Button" parent="ProblemStyleVBoxContainer"]
+[node name="MultiplicationButton" type="Button" parent="ProblemButtonContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-focus_neighbor_bottom = NodePath("../AdditionButton")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 32
 text = "Multiplication
-×
-"
+×"
 
-[node name="DivisionButton" type="Button" parent="ProblemStyleVBoxContainer"]
+[node name="DivisionButton" type="Button" parent="ProblemButtonContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 focus_neighbor_bottom = NodePath("../AdditionButton")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 32
 text = "Division
 ÷"
 
-[connection signal="pressed" from="SelectionVBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="SelectionVBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="ProblemStyleVBoxContainer/AdditionButton" to="." method="_on_addition_button_pressed"]
-[connection signal="pressed" from="ProblemStyleVBoxContainer/SubtractionButton" to="." method="_on_subtraction_button_pressed"]
-[connection signal="pressed" from="ProblemStyleVBoxContainer/MultiplicationButton" to="." method="_on_multiplication_button_pressed"]
-[connection signal="pressed" from="ProblemStyleVBoxContainer/DivisionButton" to="." method="_on_division_button_pressed"]
+[connection signal="pressed" from="MainButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ProblemButtonContainer/AdditionButton" to="." method="_on_addition_button_pressed"]
+[connection signal="pressed" from="ProblemButtonContainer/SubtractionButton" to="." method="_on_subtraction_button_pressed"]
+[connection signal="pressed" from="ProblemButtonContainer/MultiplicationButton" to="." method="_on_multiplication_button_pressed"]
+[connection signal="pressed" from="ProblemButtonContainer/DivisionButton" to="." method="_on_division_button_pressed"]

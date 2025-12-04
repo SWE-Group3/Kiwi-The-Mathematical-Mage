@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf3nh4knighna"
-path="res://.godot/imported/fireball_spell_card.png-6ba3b758db14443643d32efa9a05b599.ctex"
+uid="uid://bbb2pa8hcm5oc"
+path="res://.godot/imported/tileset.png-9a7aa93aa20d6fc1a677061e224b6b5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/fireball_spell_card.png"
-dest_files=["res://.godot/imported/fireball_spell_card.png-6ba3b758db14443643d32efa9a05b599.ctex"]
+source_file="res://art/tileset.png"
+dest_files=["res://.godot/imported/tileset.png-9a7aa93aa20d6fc1a677061e224b6b5b.ctex"]
 
 [params]
 

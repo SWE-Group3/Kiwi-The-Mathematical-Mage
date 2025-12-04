@@ -1,22 +1,28 @@
 extends Control
 
-func _ready():
-	$AnimationPlayer.play("RESET")
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed('ui_cancel'):
+		if get_tree().paused:
+			_on_resume_button_pressed()
+		else:
+			_on_pause_button_pressed()
 
-func resume():
+func _on_pause_button_pressed() -> void:
+	get_tree().paused = true
+	show()
+
+func _on_resume_button_pressed() -> void:
 	get_tree().paused = false
-	$AnimationPlayer.play_backwards("blur")
+	hide()
+
+func _on_options_button_pressed() -> void:
+	print('Options')
 
 func pause():
 	get_tree().paused = true
-	$AnimationPlayer.play("blur")
-
-func _on_resume_pressed() -> void:
-	resume()
-
-func _on_options_pressed() -> void:
-	pass # Replace with function body.
-
+func resume():
+	get_tree().paused = false
+	
 func _on_quit_to_menu_pressed() -> void:
 	resume()
 	get_tree().change_scene_to_file("res://main_menu.tscn")
@@ -29,3 +35,7 @@ func _process(_delta: float) -> void:
 
 func _on_pause_pressed() -> void:
 	pause()
+
+func _on_exit_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file('res://main_menu.tscn')
