@@ -1,0 +1,134 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8h5s5lyy55lt"]
+
+[ext_resource type="Shader" uid="uid://cda0eor1qtote" path="res://ui/menu/blur.gdshader" id="1_rt5sn"]
+[ext_resource type="Texture2D" uid="uid://d0xb6r8tq5xyi" path="res://art/menu_tile.png" id="2_q68ok"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rtlx6"]
+shader = ExtResource("1_rt5sn")
+shader_parameter/blur = 0.800000038
+
+[node name="HowToPlayGuide" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlurFilter" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_rtlx6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -268.0
+offset_right = 82.0
+offset_bottom = -223.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "How to Play"
+horizontal_alignment = 1
+
+[node name="Background" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -212.0
+offset_right = 384.0
+offset_bottom = 212.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_q68ok")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 20.0
+offset_right = -8.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectiveHeader" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Objective"
+horizontal_alignment = 1
+
+[node name="ObjectiveBody" type="Label" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Kiwi needs your help to defend a clutch of eggs from hungry predators! Solve math problems to help Kiwi generate mana and use it to cast spells at predators!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MathProblemsHeader" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Math Problems"
+horizontal_alignment = 1
+
+[node name="MathProblemsBody" type="Label" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Math problems are shown in the bottom of the screen when the game starts. Enter the correct answer to earn more mana so that you can cast more spells! P.S. Enter either whole numbers like 670 or mixed numbers like 1 1/2 as answers."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SpellsHeader" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Spells"
+horizontal_alignment = 1
+
+[node name="SpellsBody" type="Label" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "There are three spells Kiwi can cast at the cost of mana: Fire, Ice, and Lightning. Fire inflicts damage over time to predators. Ice freezes predators in place. Lightning causes predators to spread damage taken to nearby predators. To cast a spell, select a spell card and click on a location containing predators to hit them!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = 212.0
+offset_right = 90.0
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Close"
+
+[connection signal="pressed" from="CloseButton" to="." method="hide"]
