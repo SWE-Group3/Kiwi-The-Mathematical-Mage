@@ -96,13 +96,12 @@ static func multiplication_problem_factory(difficulty: int) -> MathProblem:
 	if difficulty <= 20:
 		return _gen_int_times_int_problem(difficulty)
 	if difficulty >= 50:
-		
 		var prob_fraction = 0.60
 		if randf() < prob_fraction:
 			return _gen_int_times_fraction_problem(difficulty)
 	else:
 		# earlier waves should ease in the fractions. 
-		var prob_fraction = (difficulty + 10) / 70.
+		var prob_fraction = (difficulty + 10) / 80.
 		if randf() < prob_fraction:
 			return _gen_int_times_fraction_problem(difficulty)
 	return _gen_int_times_int_problem(difficulty)
@@ -158,3 +157,26 @@ static func _gen_int_times_fraction_problem(_difficulty: int) -> MathProblem:
 	var answer = numerator * multiple
 	var mana_reward = 20
 	return MixedNumberMathProblem.new(question, answer, denominator, mana_reward)
+
+static func division_problem_factory(difficulty: int) -> MathProblem:
+	@warning_ignore( "integer_division" )
+	var dividend_digits = max(difficulty / 20 + 1 + (randi() & 1), 1)
+	var divisor = randi() % 9 + 2
+	@warning_ignore("narrowing_conversion")
+	var dividend = randi_range(pow(10., dividend_digits - 1), pow(10., dividend_digits) - 1)
+	
+	var answer: int
+	var question: String
+	
+	# remainder problem
+	if randf() < 0.5:
+		question = "What is the remainder of %d ÷ %d?" % [dividend, divisor]
+		answer = dividend % divisor
+	else:
+		question = "What is the quotient of %d ÷ %d?" % [dividend, divisor]
+		@warning_ignore( "integer_division" )
+		answer = dividend / divisor
+		
+	var reward = dividend_digits * 7 + 5
+	return IntegerMathProblem.new(question, answer, reward)
+	

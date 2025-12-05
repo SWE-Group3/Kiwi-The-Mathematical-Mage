@@ -19,10 +19,10 @@ func _on_subtraction_button_pressed() -> void:
 
 func _on_multiplication_button_pressed() -> void:
 	Global.math_problem_factory = MathProblemFactories.multiplication_problem_factory
-	return
 
 func _on_division_button_pressed() -> void:
-	return
+	Global.math_problem_factory = MathProblemFactories.division_problem_factory
+
 func _on_options_menu_ready() -> void:
 	_on_music_volume_changed($OptionsMenu.get_options().music_volume)
 
