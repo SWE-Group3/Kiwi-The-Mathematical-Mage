@@ -15,10 +15,10 @@ func get_options() -> Options:
 	return _options
 
 func _ready() -> void:
-	_options = load('res://options.tres')
+	_options = load('res://ui/menu/options.tres')
 	if _options == null:
 		_options = Options.new()
-		ResourceSaver.save(_options, 'res://options.tres')
+		ResourceSaver.save(_options, 'res://ui/menu/options.tres')
 	get_music_volume_slider().value = _options.music_volume
 	get_sound_effects_volume_slider().value = _options.sound_effects_volume
 
