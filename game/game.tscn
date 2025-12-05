@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=4 uid="uid://b5f6v431hkhik"]
 
-[ext_resource type="Script" uid="uid://cfvf6f48oieqy" path="res://game.gd" id="1_j5wjh"]
-[ext_resource type="PackedScene" uid="uid://b70kgle12qbtf" path="res://user_interface.tscn" id="2_7jktm"]
+[ext_resource type="Script" uid="uid://cfvf6f48oieqy" path="res://game/game.gd" id="1_j5wjh"]
+[ext_resource type="PackedScene" uid="uid://b70kgle12qbtf" path="res://ui/game/user_interface.tscn" id="2_7jktm"]
 [ext_resource type="TileSet" uid="uid://8et0wkid5sxn" path="res://art/tileset.tres" id="3_hve3p"]
-[ext_resource type="Script" uid="uid://e0mlxoyb12v5" path="res://tile_map_layer.gd" id="4_7jktm"]
+[ext_resource type="Script" uid="uid://e0mlxoyb12v5" path="res://ui/game/tile_map_layer.gd" id="4_7jktm"]
 [ext_resource type="Texture2D" uid="uid://b85fnotuei24h" path="res://art/kiwi.png" id="4_fc0e3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7jktm"]

@@ -21,10 +21,6 @@ func _on_spell_3_pressed() -> void:
 func _on_spell_4_pressed() -> void:
 	SpellManager.select_spell("fireball")  # Changed (or add a 4th spell)
 	print("Casting Spell 4")
-	
-
-		
-		
 
 func _on_spawn_timer_timeout() -> void:
 	var pickEnemy = randi_range(1, 3)
@@ -33,11 +29,11 @@ func _on_spawn_timer_timeout() -> void:
 	var _enemy: Resource
 	match pickEnemy:
 		1:
-			_enemy = preload("res://stoat_path_follow.tscn")
+			_enemy = preload("res://predators/stoat/stoat_path_follow.tscn")
 		2:
-			_enemy = preload("res://cat_path_follow.tscn")
+			_enemy = preload("res://predators/cat/cat_path_follow.tscn")
 		3:
-			_enemy = preload("res://dog_path_follow.tscn")
+			_enemy = preload("res://predators/dog/dog_path_follow.tscn")
 	
 	match pickPath:
 		1: 

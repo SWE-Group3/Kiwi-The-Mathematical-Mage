@@ -1,15 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://iigwf2vmdyx7"]
+[gd_scene load_steps=7 format=3 uid="uid://3pvfhqelk7to"]
 
-[ext_resource type="Script" uid="uid://thjmtlbtpavq" path="res://cat.gd" id="1_52fj1"]
-[ext_resource type="Texture2D" uid="uid://cthj4h1t1ynbk" path="res://art/cat.png" id="2_52fj1"]
+[ext_resource type="Script" uid="uid://bno6n51sjd8rw" path="res://predators/dog/dog.gd" id="1_kb3ao"]
+[ext_resource type="Texture2D" uid="uid://c3b0lecmo310u" path="res://art/dog.png" id="2_kb3ao"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_52fj1"]
-atlas = ExtResource("2_52fj1")
-region = Rect2(0, 0, 48, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptela"]
+atlas = ExtResource("2_kb3ao")
+region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6fl1u"]
-atlas = ExtResource("2_52fj1")
-region = Rect2(48, 0, 48, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngebd"]
+atlas = ExtResource("2_kb3ao")
+region = Rect2(100, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eln2t"]
 animations = [{
@@ -25,10 +25,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_52fj1")
+"texture": SubResource("AtlasTexture_ptela")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6fl1u")
+"texture": SubResource("AtlasTexture_ngebd")
 }],
 "loop": true,
 "name": &"move",
@@ -38,8 +38,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u54e6"]
 size = Vector2(39, 27)
 
-[node name="Cat" type="Area2D"]
-script = ExtResource("1_52fj1")
+[node name="Dog" type="Area2D"]
+script = ExtResource("1_kb3ao")
 metadata/_edit_horizontal_guides_ = [187.0]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -47,7 +47,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_eln2t")
 animation = &"move"
 autoplay = "move"
-frame_progress = 0.7326914
+frame_progress = 0.4038444
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_u54e6")

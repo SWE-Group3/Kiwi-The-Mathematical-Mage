@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b33tyie7nt1ll"]
 
-[ext_resource type="Script" uid="uid://bdaw6o5n7sott" path="res://upgrade_menu.gd" id="1_cpgeo"]
-[ext_resource type="Shader" uid="uid://cda0eor1qtote" path="res://blur.gdshader" id="1_jgaba"]
+[ext_resource type="Script" uid="uid://bdaw6o5n7sott" path="res://ui/game/upgrade_menu.gd" id="1_cpgeo"]
+[ext_resource type="Shader" uid="uid://cda0eor1qtote" path="res://ui/menu/blur.gdshader" id="1_jgaba"]
 [ext_resource type="Texture2D" uid="uid://cf3nh4knighna" path="res://art/fireball_card.png" id="3_qoy4f"]
 [ext_resource type="Texture2D" uid="uid://d0xb6r8tq5xyi" path="res://art/menu_tile.png" id="4_gi4mh"]
 [ext_resource type="Texture2D" uid="uid://ch0mqb4gbmmul" path="res://art/upgrade_card.png" id="5_h3u4o"]

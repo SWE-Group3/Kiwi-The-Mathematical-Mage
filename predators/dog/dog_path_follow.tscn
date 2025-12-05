@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bogmcxvlayws3"]
 
-[ext_resource type="Script" uid="uid://bir625li608yq" path="res://predator_path_follow.gd" id="1_4xl2x"]
-[ext_resource type="PackedScene" uid="uid://jrot652c5pwh" path="res://dog.tscn" id="2_4xl2x"]
+[ext_resource type="Script" uid="uid://bir625li608yq" path="res://predators/predator_path_follow.gd" id="1_4xl2x"]
+[ext_resource type="PackedScene" uid="uid://3pvfhqelk7to" path="res://predators/dog/dog.tscn" id="2_4xl2x"]
 
 [node name="DogPathFollow" type="PathFollow2D"]
 rotates = false

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bju2cxlfny0x7"]
 
-[ext_resource type="Script" uid="uid://bir625li608yq" path="res://predator_path_follow.gd" id="1_ou7bf"]
-[ext_resource type="PackedScene" uid="uid://d3h8b546qk6i5" path="res://stoat.tscn" id="2_rxdle"]
+[ext_resource type="Script" uid="uid://bir625li608yq" path="res://predators/predator_path_follow.gd" id="1_ou7bf"]
+[ext_resource type="PackedScene" uid="uid://d3h8b546qk6i5" path="res://predators/stoat/stoat.tscn" id="2_rxdle"]
 
 [node name="StoatPathFollow" type="PathFollow2D"]
 rotates = false

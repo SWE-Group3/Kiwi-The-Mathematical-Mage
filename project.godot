@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SpellManager="*res://spell_manager.gd"
-Global="*res://global.gd"
+SpellManager="*res://spells/spell_manager.gd"
+Global="*res://game/global.gd"
 
 [display]
 

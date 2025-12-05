@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctkalcoy01pse"]
 
-[ext_resource type="Script" path="res://predator_path_follow.gd" id="1_lcpm7"]
-[ext_resource type="PackedScene" uid="uid://iigwf2vmdyx7" path="res://cat.tscn" id="2_lcpm7"]
+[ext_resource type="Script" uid="uid://bir625li608yq" path="res://predators/predator_path_follow.gd" id="1_lcpm7"]
+[ext_resource type="PackedScene" uid="uid://iigwf2vmdyx7" path="res://predators/cat/cat.tscn" id="2_lcpm7"]
 
 [node name="CatPathFollow" type="PathFollow2D"]
 rotates = false
