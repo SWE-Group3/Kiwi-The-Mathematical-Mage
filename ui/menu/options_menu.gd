@@ -31,5 +31,5 @@ func _on_sound_effects_slider_value_changed(value: float) -> void:
 	sound_effects_volume_changed.emit(value)
 
 func _on_save_and_close_button_pressed() -> void:
-	ResourceSaver.save(_options, 'res://options.tres')
+	ResourceSaver.save(_options, 'res://ui/menu/options.tres')
 	visible = not visible
