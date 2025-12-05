@@ -2,6 +2,7 @@ extends PathFollow2D
 
 @export var speed: float = 100.0
 @export var health: int = 100
+signal enemy_died
 
 var base_speed: float
 var current_speed: float
@@ -38,6 +39,7 @@ func take_damage(amount: int):
 
 func die():
 	print("Enemy died!")
+	emit_signal("enemy_died")
 	queue_free()
 
 # Unified status effect function
