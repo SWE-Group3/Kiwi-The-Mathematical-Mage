@@ -12,11 +12,9 @@ func _process(_delta: float) -> void:
 
 
 static func add_sub_problem_factory(difficulty: int, is_sub: bool) -> MathProblem:
-	
 	# early waves should be just basic addition and subtraction
 	if difficulty <= 20:
 		return _gen_simple_add_sub_int_problem(difficulty, is_sub)
-	
 	
 	if difficulty >= 50:
 		# later waves should be mostly fractions 
@@ -97,6 +95,16 @@ static func _gen_add_sub_fraction_problem(difficulty: int, is_sub: bool) -> Math
 static func multiplication_problem_factory(difficulty: int) -> MathProblem:
 	if difficulty <= 20:
 		return _gen_int_times_int_problem(difficulty)
+	if difficulty >= 50:
+		
+		var prob_fraction = 0.60
+		if randf() < prob_fraction:
+			return _gen_int_times_fraction_problem(difficulty)
+	else:
+		# earlier waves should ease in the fractions. 
+		var prob_fraction = (difficulty + 10) / 70.
+		if randf() < prob_fraction:
+			return _gen_int_times_fraction_problem(difficulty)
 	return _gen_int_times_int_problem(difficulty)
 	
 static func _gen_int_times_int_problem(difficulty: int) -> MathProblem:
@@ -122,8 +130,8 @@ static func _gen_int_times_int_problem(difficulty: int) -> MathProblem:
 	# just make it a multiplication table instead if top and bottom is 1.
 	# it's more interesting.
 	if top_num_digits == 1 && bottom_num_digits == 1:
-		top = randi_range(1, 12)
-		bottom = randi_range(1, 12)
+		top = randi_range(0, 12)
+		bottom = randi_range(0, 12)
 		
 	else:
 		@warning_ignore("narrowing_conversion")
@@ -133,9 +141,20 @@ static func _gen_int_times_int_problem(difficulty: int) -> MathProblem:
 	
 	var answer = top * bottom
 	
-	var question: String
-	var reward: int
+	var question = "%d × %d = ?" % [top, bottom]
+	var reward = top_num_digits * 5 + 5
 	
-	question = "%d × %d = ?" % [top, bottom]
-	reward = top_num_digits * 5 + 5
 	return IntegerMathProblem.new(question, answer, reward)
+
+static func _gen_int_times_fraction_problem(_difficulty: int) -> MathProblem:
+	var denominator = randi() % 10 + 2
+	var numerator = randi_range(1, denominator - 1)
+	var multiple = randi() % 10 + 2
+	var question: String
+	if randf() < 0.5:
+		question = "%d × %d / %d = ?" % [multiple, numerator, denominator]
+	else:
+		question = "%d / %d × %d = ?" % [numerator, denominator, multiple]
+	var answer = numerator * multiple
+	var mana_reward = 20
+	return MixedNumberMathProblem.new(question, answer, denominator, mana_reward)
