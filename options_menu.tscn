@@ -154,4 +154,6 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "Save and Close"
 
+[connection signal="value_changed" from="Background/MusicVolumeContainer/Slider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="Background/SoundEffectsVolumeContainer/Slider" to="." method="_on_sound_effects_slider_value_changed"]
 [connection signal="pressed" from="SaveAndCloseButton" to="." method="_on_save_and_close_button_pressed"]

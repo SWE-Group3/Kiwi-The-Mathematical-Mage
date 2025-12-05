@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://drq6hkx2win3t"]
+[gd_scene load_steps=5 format=3 uid="uid://drq6hkx2win3t"]
 
 [ext_resource type="Script" uid="uid://ctlvh5xp0b35v" path="res://main_menu.gd" id="1_i26rj"]
 [ext_resource type="Texture2D" uid="uid://cgpj3dasxadii" path="res://art/ai_kiwi.png" id="2_eiy7p"]
 [ext_resource type="PackedScene" uid="uid://bugep6k2bkti2" path="res://options_menu.tscn" id="3_fu7sn"]
+[ext_resource type="AudioStream" uid="uid://c14rfh7sw7acd" path="res://audio/upgrade_menu_theme.mp3" id="4_jix8l"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -106,6 +107,12 @@ text = "Division
 visible = false
 layout_mode = 1
 
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jix8l")
+autoplay = true
+
 [connection signal="pressed" from="MainButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainButtonContainer/OptionsButton" to="OptionsMenu" method="show"]
 [connection signal="pressed" from="MainButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="music_volume_changed" from="OptionsMenu" to="." method="_on_music_volume_changed"]
+[connection signal="ready" from="OptionsMenu" to="." method="_on_options_menu_ready"]
