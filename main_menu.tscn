@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://drq6hkx2win3t"]
+[gd_scene load_steps=4 format=3 uid="uid://drq6hkx2win3t"]
 
 [ext_resource type="Script" uid="uid://ctlvh5xp0b35v" path="res://main_menu.gd" id="1_i26rj"]
 [ext_resource type="Texture2D" uid="uid://cgpj3dasxadii" path="res://art/ai_kiwi.png" id="2_eiy7p"]
+[ext_resource type="PackedScene" uid="uid://bugep6k2bkti2" path="res://options_menu.tscn" id="3_fu7sn"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -101,5 +102,10 @@ theme_override_font_sizes/font_size = 32
 text = "Division
 ÷"
 
+[node name="OptionsMenu" parent="." instance=ExtResource("3_fu7sn")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="MainButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainButtonContainer/OptionsButton" to="OptionsMenu" method="show"]
 [connection signal="pressed" from="MainButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]
