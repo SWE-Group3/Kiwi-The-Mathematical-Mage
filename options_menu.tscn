@@ -1,0 +1,153 @@
+[gd_scene load_steps=4 format=3 uid="uid://bugep6k2bkti2"]
+
+[ext_resource type="Texture2D" uid="uid://d0xb6r8tq5xyi" path="res://art/menu_tile.png" id="1_lbr8e"]
+[ext_resource type="Shader" uid="uid://cda0eor1qtote" path="res://blur.gdshader" id="1_t1lix"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4gmlt"]
+shader = ExtResource("1_t1lix")
+shader_parameter/blur = 0.800000038
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlurFilter" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_4gmlt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -268.0
+offset_right = 82.0
+offset_bottom = -223.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+
+[node name="Background" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -212.0
+offset_right = 384.0
+offset_bottom = 212.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_lbr8e")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="VolumeLabel" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = 16.0
+offset_right = 44.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVolumeContainer" type="HSplitContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -288.0
+offset_top = 72.0
+offset_right = 288.0
+offset_bottom = 106.0
+grow_horizontal = 2
+size_flags_vertical = 3
+split_offset = 176
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="Background/MusicVolumeContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Music"
+
+[node name="Slider" type="HSlider" parent="Background/MusicVolumeContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 10.0
+value = 10.0
+rounded = true
+tick_count = 10
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="SoundEffectsVolumeContainer" type="HSplitContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -288.0
+offset_top = 136.0
+offset_right = 288.0
+offset_bottom = 170.0
+grow_horizontal = 2
+size_flags_vertical = 3
+split_offset = 176
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="Background/SoundEffectsVolumeContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Sound Effects"
+
+[node name="Slider" type="HSlider" parent="Background/SoundEffectsVolumeContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 10.0
+value = 10.0
+rounded = true
+tick_count = 10
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="SaveAndCloseButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.0
+offset_top = 108.0
+offset_right = 121.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Save and Close"
