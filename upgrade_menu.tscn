@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b33tyie7nt1ll"]
+[gd_scene load_steps=9 format=3 uid="uid://b33tyie7nt1ll"]
 
 [ext_resource type="Script" uid="uid://bdaw6o5n7sott" path="res://upgrade_menu.gd" id="1_cpgeo"]
 [ext_resource type="Shader" uid="uid://cda0eor1qtote" path="res://blur.gdshader" id="1_jgaba"]
 [ext_resource type="Texture2D" uid="uid://cf3nh4knighna" path="res://art/fireball_card.png" id="3_qoy4f"]
 [ext_resource type="Texture2D" uid="uid://d0xb6r8tq5xyi" path="res://art/menu_tile.png" id="4_gi4mh"]
+[ext_resource type="Texture2D" uid="uid://ch0mqb4gbmmul" path="res://art/upgrade_card.png" id="5_h3u4o"]
+[ext_resource type="Texture2D" uid="uid://jo2yfx6omvad" path="res://art/freeze_card.png" id="6_mgvak"]
+[ext_resource type="Texture2D" uid="uid://bjpat7klvkpwy" path="res://art/charge_card.png" id="7_803m7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gi4mh"]
 shader = ExtResource("1_jgaba")
@@ -55,7 +58,7 @@ anchor_bottom = 0.5
 offset_left = -384.0
 offset_top = -296.0
 offset_right = 384.0
-offset_bottom = 128.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = -8
@@ -84,6 +87,7 @@ offset_right = 168.0
 offset_bottom = 248.0
 scale = Vector2(0.4, 0.4)
 texture_normal = ExtResource("3_qoy4f")
+texture_disabled = ExtResource("5_h3u4o")
 
 [node name="InfoCell" type="NinePatchRect" parent="SpellContainer/Row1"]
 texture_filter = 1
@@ -93,6 +97,63 @@ region_rect = Rect2(8, 0, 120, 128)
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
+
+[node name="UpgradeCards" type="HBoxContainer" parent="SpellContainer/Row1/InfoCell"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 7.9999995
+offset_right = 1697.4998
+offset_bottom = 247.99998
+scale = Vector2(0.4, 0.4)
+theme_override_constants/separation = 220
+
+[node name="UpgradeDamage1" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradePotency1" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradeCoolDown1" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradeCost1" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradeDamage2" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradePotency2" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradeCoolDown2" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradeCost2" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
 
 [node name="Row2" type="HSplitContainer" parent="SpellContainer"]
 layout_mode = 2
@@ -117,7 +178,7 @@ offset_top = 8.0
 offset_right = 168.0
 offset_bottom = 248.0
 scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("3_qoy4f")
+texture_normal = ExtResource("6_mgvak")
 
 [node name="InfoCell" type="NinePatchRect" parent="SpellContainer/Row2"]
 texture_filter = 1
@@ -127,6 +188,63 @@ region_rect = Rect2(8, 0, 120, 128)
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
+
+[node name="UpgradeCards" type="HBoxContainer" parent="SpellContainer/Row2/InfoCell"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 7.9999995
+offset_right = 1697.4998
+offset_bottom = 247.99998
+scale = Vector2(0.4, 0.4)
+theme_override_constants/separation = 220
+
+[node name="UpgradeDamage1" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradePotency1" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradeCoolDown1" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradeCost1" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradeDamage2" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradePotency2" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradeCoolDown2" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradeCost2" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
 
 [node name="Row3" type="HSplitContainer" parent="SpellContainer"]
 layout_mode = 2
@@ -151,7 +269,7 @@ offset_top = 8.0
 offset_right = 168.0
 offset_bottom = 248.0
 scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("3_qoy4f")
+texture_normal = ExtResource("7_803m7")
 
 [node name="InfoCell" type="NinePatchRect" parent="SpellContainer/Row3"]
 texture_filter = 1
@@ -162,39 +280,62 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="Row4" type="HSplitContainer" parent="SpellContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-split_offset = 80
-dragging_enabled = false
-dragger_visibility = 2
-
-[node name="CardCell" type="NinePatchRect" parent="SpellContainer/Row4"]
+[node name="UpgradeCards" type="HBoxContainer" parent="SpellContainer/Row3/InfoCell"]
 texture_filter = 1
-layout_mode = 2
-texture = ExtResource("4_gi4mh")
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="UpgradeButton" type="TextureButton" parent="SpellContainer/Row4/CardCell"]
-layout_mode = 1
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 168.0
-offset_bottom = 248.0
+layout_mode = 0
+offset_top = 7.9999995
+offset_right = 1697.4998
+offset_bottom = 247.99998
 scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("3_qoy4f")
+theme_override_constants/separation = 220
 
-[node name="InfoCell" type="NinePatchRect" parent="SpellContainer/Row4"]
-texture_filter = 1
+[node name="UpgradeDamage1" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
 layout_mode = 2
-texture = ExtResource("4_gi4mh")
-region_rect = Rect2(8, 0, 120, 128)
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradePotency1" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradeCoolDown1" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradeCost1" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradeDamage2" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradePotency2" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradeCoolDown2" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
+
+[node name="UpgradeCost2" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+disabled = true
+texture_disabled = ExtResource("5_h3u4o")
 
 [node name="CloseButton" type="Button" parent="."]
 layout_mode = 1
@@ -204,9 +345,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -90.0
-offset_top = 128.0
+offset_top = 72.0
 offset_right = 90.0
-offset_bottom = 224.0
+offset_bottom = 168.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
@@ -215,5 +356,4 @@ text = "Close"
 [connection signal="pressed" from="SpellContainer/Row1/CardCell/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="SpellContainer/Row2/CardCell/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="SpellContainer/Row3/CardCell/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
-[connection signal="pressed" from="SpellContainer/Row4/CardCell/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="hide"]
