@@ -103,3 +103,7 @@ text = "Division
 
 [connection signal="pressed" from="MainButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ProblemButtonContainer/AdditionButton" to="." method="_on_addition_button_pressed"]
+[connection signal="pressed" from="ProblemButtonContainer/SubtractionButton" to="." method="_on_subtraction_button_pressed"]
+[connection signal="pressed" from="ProblemButtonContainer/MultiplicationButton" to="." method="_on_multiplication_button_pressed"]
+[connection signal="pressed" from="ProblemButtonContainer/DivisionButton" to="." method="_on_division_button_pressed"]
