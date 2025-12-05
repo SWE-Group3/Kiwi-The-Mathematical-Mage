@@ -99,9 +99,9 @@ text = "Music"
 [node name="Slider" type="HSlider" parent="Background/MusicVolumeContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-max_value = 10.0
-value = 10.0
-rounded = true
+max_value = 1.0
+step = 0.1
+value = 1.0
 tick_count = 10
 ticks_on_borders = true
 ticks_position = 3
@@ -129,9 +129,9 @@ text = "Sound Effects"
 [node name="Slider" type="HSlider" parent="Background/SoundEffectsVolumeContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-max_value = 10.0
-value = 10.0
-rounded = true
+max_value = 1.0
+step = 0.1
+value = 1.0
 tick_count = 10
 ticks_on_borders = true
 ticks_position = 3
