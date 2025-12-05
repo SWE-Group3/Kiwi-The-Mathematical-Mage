@@ -29,7 +29,7 @@ var spells = {
 	},
 	"lightning": {
 		"name": "Lightning",
-		"damage": 50,  # Damage per enemy hit
+		"damage": 60,  # Damage per enemy hit
 		"radius": 25,
 		"color": Color.YELLOW,
 		"type": "chain",  # Hits nearby enemies
@@ -125,10 +125,16 @@ func apply_freeze_effect(pos: Vector2, spell: Dictionary):
 			enemy.apply_status("freeze", spell["damage"], EFFECT_DURATION)
 
 func apply_chain_effect(pos: Vector2, spell: Dictionary):
-	var enemies = get_enemies_in_radius(pos, spell["radius"] + 50)
-	for enemy in enemies:
-		if enemy.has_method("apply_status"):
-			enemy.apply_status("shock", spell["damage"], 0)  # Instant damage
+	var directEnemies = get_enemies_in_radius(pos, spell["radius"])
+	var chainEnemies = get_enemies_in_radius(pos, spell["radius"] + 100)
+	for enemy in chainEnemies:
+		if enemy in directEnemies:
+			if enemy.has_method("apply_status"):
+				enemy.apply_status("directShock", spell["damage"], 0)  # Instant damage
+		else:
+			if enemy.has_method("apply_status"):
+				enemy.apply_status("shock", spell["damage"], 0)  # Instant damage
+	
 
 func get_enemies_in_radius(pos: Vector2, radius: float) -> Array:
 	var enemies_in_range = []
