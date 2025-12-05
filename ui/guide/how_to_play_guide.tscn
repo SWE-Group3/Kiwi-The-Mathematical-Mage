@@ -80,6 +80,7 @@ text = "Objective"
 horizontal_alignment = 1
 
 [node name="ObjectiveBody" type="Label" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Kiwi needs your help to defend a clutch of eggs from hungry predators! Solve math problems to help Kiwi generate mana and use it to cast spells at predators!"
@@ -93,6 +94,7 @@ text = "Math Problems"
 horizontal_alignment = 1
 
 [node name="MathProblemsBody" type="Label" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Math problems are shown in the bottom of the screen when the game starts. Enter the correct answer to earn more mana so that you can cast more spells! P.S. Enter either whole numbers like 670 or mixed numbers like 1 1/2 as answers."
@@ -106,6 +108,7 @@ text = "Spells"
 horizontal_alignment = 1
 
 [node name="SpellsBody" type="Label" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "There are three spells Kiwi can cast at the cost of mana: Fire, Ice, and Lightning. Fire inflicts damage over time to predators. Ice freezes predators in place. Lightning causes predators to spread damage taken to nearby predators. To cast a spell, select a spell card and click on a location containing predators to hit them!"
