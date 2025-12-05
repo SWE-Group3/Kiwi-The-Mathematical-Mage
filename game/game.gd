@@ -61,35 +61,45 @@ func _on_spell_4_pressed() -> void:
 	#return enemiesSpawned
 
 func pick_enemies(points: int) -> Dictionary:
+	print("hello from pick_enemies")
 	var enemies: Array[PackedScene] = []
 	var points_left = points
+	print("points: ", points)
+	print("pointsleft:", points_left)
 	
 	while points_left > 0:
+		print("made it into the loop")
 		var pickEnemy = randi_range(1, 3)
 		var cost = 0
 		var enemy_scene: PackedScene = null
-
+		print ("enemy who will be picked: ", pickEnemy)
 		match pickEnemy:
 			1:
 				cost = 1
 				if points_left >= cost:
 					enemy_scene = preload("res://predators/stoat/stoat_path_follow.tscn")
+					print("stoat chosen")
 			2:
 				cost = 12
 				if points_left >= cost:
 					enemy_scene = preload("res://predators/cat/cat_path_follow.tscn")
+					print("cat chosen")
 			3:
 				cost = 24
 				if points_left >= cost:
 					enemy_scene = preload("res://predators/dog/dog_path_follow.tscn")
-
+					print("dog chosen")
+			_:
+				print("no enemy chosen")
 		# If enemy_scene wasn’t valid (points too low), break to avoid infinite loop
-		if enemy_scene == null:
-			break
+		#if enemy_scene == null:
+			#print("im taking a break!")
+			#break
 
 		# Add to the list
-		enemies.append(enemy_scene)
-		points_left -= cost
+		if enemy_scene != null:
+			enemies.append(enemy_scene)
+			points_left -= cost
 
 	# Return both values
 	return {
@@ -112,7 +122,10 @@ func spawn_enemies(enemies: Array):
 				$MiddlePath.add_child(spawn)
 			3: 
 				$BottomPath.add_child(spawn)
-	
+				
+		print("enemy spawned")
+		await get_tree().create_timer(1.0).timeout
+
 #func _on_spawn_timer_timeout() -> void:
 	#var pickEnemy = randi_range(1, 3)
 	#var pickPath = randi_range(1,3)
