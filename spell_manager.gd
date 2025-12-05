@@ -3,26 +3,32 @@ extends Node
 # Currently selected spell
 var selected_spell = null
 
+
+#### TO DO
+### Add to the spells so they have a mana cost and subtract from the mana pool when 
+### they are cast
+###
+
 # Spell data structure
 var spells = {
 	"fireball": {
 		"name": "Fireball",
 		"damage": 20,  # Damage per tick
-		"radius": 100,
+		"radius": 75,
 		"color": Color.RED,
 		"type": "dot"  # Damage over time
 	},
 	"ice_blast": {
 		"name": "Ice Blast",
 		"damage": 30,
-		"radius": 150,
+		"radius": 100,
 		"color": Color.CYAN,
 		"type": "freeze"
 	},
 	"lightning": {
 		"name": "Lightning",
-		"damage": 25,  # Damage per enemy hit
-		"radius": 200,
+		"damage": 50,  # Damage per enemy hit
+		"radius": 25,
 		"color": Color.YELLOW,
 		"type": "chain"  # Hits nearby enemies
 	}
@@ -95,7 +101,7 @@ func apply_freeze_effect(pos: Vector2, spell: Dictionary):
 			enemy.apply_status("freeze", spell["damage"], EFFECT_DURATION)
 
 func apply_chain_effect(pos: Vector2, spell: Dictionary):
-	var enemies = get_enemies_in_radius(pos, spell["radius"])
+	var enemies = get_enemies_in_radius(pos, spell["radius"] + 50)
 	for enemy in enemies:
 		if enemy.has_method("apply_status"):
 			enemy.apply_status("shock", spell["damage"], 0)  # Instant damage

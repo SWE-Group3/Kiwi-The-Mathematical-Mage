@@ -48,7 +48,7 @@ func apply_status(status_type: String, damage: int, duration: float):
 		"freeze":
 			apply_freeze(duration)
 		"shock":
-			take_damage(damage)  # Instant damage
+			take_damage(damage + 10)  # Instant damage
 		_:
 			print("Unknown status: ", status_type)
 
