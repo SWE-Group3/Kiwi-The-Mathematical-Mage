@@ -6,7 +6,7 @@ func _ready() -> void:
 	Global.wave_started.connect(_on_start_wave)
 	Global.wave_completed.connect(_on_wave_completed)
 	$BottomHUD/ProblemContainer.visible = false
-	$BottomHUD/ColorRect.visible = false
+	$BottomHUD/ProblemBackground.visible = false
  
 func _on_start_wave(wave: int) -> void:
 	$SpawnTimer.start()

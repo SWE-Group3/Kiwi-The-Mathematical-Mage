@@ -151,7 +151,7 @@ theme_override_font_sizes/font_size = 32
 text = "Start Wave
 "
 
-[node name="ColorRect" type="ColorRect" parent="BottomHUD"]
+[node name="ProbelmBackground" type="ColorRect" parent="BottomHUD"]
 layout_mode = 0
 offset_left = 301.0
 offset_top = 16.0
