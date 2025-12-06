@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://drq6hkx2win3t"]
 
-[ext_resource type="Script" uid="uid://ctlvh5xp0b35v" path="res://ui/menu/main_menu.gd" id="1_4gkdq"]
+[ext_resource type="Script" uid="uid://ctlvh5xp0b35v" path="res://ui/main_menu.gd" id="1_4gkdq"]
 [ext_resource type="Texture2D" uid="uid://cgpj3dasxadii" path="res://art/ai_kiwi.png" id="2_yc8k7"]
 [ext_resource type="PackedScene" uid="uid://bugep6k2bkti2" path="res://ui/menu/options_menu.tscn" id="3_4aijq"]
 [ext_resource type="AudioStream" uid="uid://i4txoepetvnv" path="res://audio/super_epic_kiwi_time_or_something.mp3" id="4_4gkdq"]
