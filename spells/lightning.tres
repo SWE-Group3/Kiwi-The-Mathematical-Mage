@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://dg76u1av8txb7"]
+
+[ext_resource type="Script" uid="uid://csxiw013l3vi6" path="res://spells/spell.gd" id="1_s7dr0"]
+[ext_resource type="Texture2D" uid="uid://bsgo14pgpqyup" path="res://art/charge_effect.png" id="2_xqiu4"]
+
+[resource]
+script = ExtResource("1_s7dr0")
+name = "Lightning"
+damage = 60
+cost = 5
+radius = 25
+color = Color(1, 1, 0, 1)
+effect = "Charge"
+texture = ExtResource("2_xqiu4")
+metadata/_custom_type_script = "uid://csxiw013l3vi6"

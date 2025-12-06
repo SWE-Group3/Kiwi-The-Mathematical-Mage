@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://cjbv4er14m04e"]
+
+[ext_resource type="Script" uid="uid://csxiw013l3vi6" path="res://spells/spell.gd" id="1_j1tqe"]
+[ext_resource type="Texture2D" uid="uid://p24tdwfavsg4" path="res://art/burn_effect.png" id="2_dip6p"]
+
+[resource]
+script = ExtResource("1_j1tqe")
+name = "Fire"
+cost = 4
+radius = 75
+color = Color(1, 0, 0, 1)
+effect = "Burn"
+texture = ExtResource("2_dip6p")
+metadata/_custom_type_script = "uid://csxiw013l3vi6"
