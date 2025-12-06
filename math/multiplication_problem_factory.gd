@@ -45,7 +45,7 @@ static func _integer_times_integer_problem(difficulty: int) -> MathProblem:
 	var answer: int = top * bottom
 	var question: String = "%d × %d = ?" % [top, bottom]
 	var reward: int = top_num_digits * 5 + 5
-	return IntegerMathProblem.new(question, answer, reward)
+	return WholeNumberProblem.new(question, answer, reward)
 
 static func _integer_times_fraction_problem(_difficulty: int) -> MathProblem:
 	var denominator: int = randi() % 10 + 2
@@ -58,4 +58,4 @@ static func _integer_times_fraction_problem(_difficulty: int) -> MathProblem:
 		question = "%d / %d × %d = ?" % [numerator, denominator, multiple]
 	var answer: int = numerator * multiple
 	var reward: int = 20
-	return MixedNumberMathProblem.new(question, answer, denominator, reward)
+	return MixedNumberProblem.new(question, answer, denominator, reward)

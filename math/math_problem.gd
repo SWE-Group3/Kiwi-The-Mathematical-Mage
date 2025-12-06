@@ -1,4 +1,6 @@
-@abstract class_name MathProblem extends Object
-@export var question: String
-@export var mana_reward: int
-@abstract func verify_answer(input: String) -> bool;
+@abstract class_name MathProblem
+
+var question: String
+var mana_reward: int
+
+@abstract func verify_answer(answer: String) -> bool;

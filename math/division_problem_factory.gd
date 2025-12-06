@@ -14,4 +14,4 @@ func generate(difficulty: int) -> MathProblem:
 	else:
 		question = "What is the remainder of %d ÷ %d?" % [dividend, divisor]
 		answer = dividend % divisor
-	return IntegerMathProblem.new(question, answer, reward)
+	return WholeNumberProblem.new(question, answer, reward)

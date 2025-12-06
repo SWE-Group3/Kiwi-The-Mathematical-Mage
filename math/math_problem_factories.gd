@@ -31,7 +31,7 @@ static func _gen_simple_add_sub_int_problem(difficulty: int, is_sub: bool) -> Ma
 	var answer = left - right if is_sub else left + right
 	var question = "%d %s %d = ?" % [left, op, right]
 	var mana_reward = 5 * (max_digits - 1);
-	return IntegerMathProblem.new(question, answer, mana_reward)
+	return WholeNumberProblem.new(question, answer, mana_reward)
 	
 
 static func _gen_int_add_sub_operands(difficulty: int) -> Array[int]:
@@ -67,7 +67,7 @@ static func _gen_add_sub_fraction_problem(difficulty: int, is_sub: bool) -> Math
 		# these problems are all around the same difficulty 
 		var mana_reward = 25 
 		var answer_num = num1 - num2 if is_sub else num1 + num2
-		return MixedNumberMathProblem.new(question, answer_num, den, mana_reward)
+		return MixedNumberProblem.new(question, answer_num, den, mana_reward)
 	else:
 		if is_sub and num1 > num2:
 			var tmp = num2
@@ -78,9 +78,8 @@ static func _gen_add_sub_fraction_problem(difficulty: int, is_sub: bool) -> Math
 		var answer = num1 - num2 if is_sub else num1 + num2
 		# these problems are all around the same difficulty 
 		var mana_reward = 10 
-		return IntegerMathProblem.new(question, answer, mana_reward)
-		
-		
+		return WholeNumberProblem.new(question, answer, mana_reward)
+
 static func multiplication_problem_factory(difficulty: int) -> MathProblem:
 	if difficulty <= 20:
 		return _gen_int_times_int_problem(difficulty)
@@ -132,7 +131,7 @@ static func _gen_int_times_int_problem(difficulty: int) -> MathProblem:
 	var question = "%d × %d = ?" % [top, bottom]
 	var reward = top_num_digits * 5 + 5
 	
-	return IntegerMathProblem.new(question, answer, reward)
+	return WholeNumberProblem.new(question, answer, reward)
 
 static func _gen_int_times_fraction_problem(_difficulty: int) -> MathProblem:
 	var denominator = randi() % 10 + 2
@@ -145,7 +144,7 @@ static func _gen_int_times_fraction_problem(_difficulty: int) -> MathProblem:
 		question = "%d / %d × %d = ?" % [numerator, denominator, multiple]
 	var answer = numerator * multiple
 	var mana_reward = 20
-	return MixedNumberMathProblem.new(question, answer, denominator, mana_reward)
+	return MixedNumberProblem.new(question, answer, denominator, mana_reward)
 
 static func division_problem_factory(difficulty: int) -> MathProblem:
 	@warning_ignore( "integer_division" )
@@ -167,5 +166,5 @@ static func division_problem_factory(difficulty: int) -> MathProblem:
 		answer = dividend / divisor
 		
 	var reward = dividend_digits * 7 + 5
-	return IntegerMathProblem.new(question, answer, reward)
+	return WholeNumberProblem.new(question, answer, reward)
 	
