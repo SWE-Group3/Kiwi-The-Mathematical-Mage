@@ -111,6 +111,13 @@ layout_mode = 1
 stream = ExtResource("4_8gmgf")
 autoplay = true
 
+[node name="ScoreText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 44.0
+offset_right = 329.0
+offset_bottom = 218.0
+
 [connection signal="pressed" from="MainButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainButtonContainer/OptionsButton" to="OptionsMenu" method="show"]
 [connection signal="pressed" from="MainButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://b70kgle12qbtf"]
+[gd_scene load_steps=17 format=3 uid="uid://b70kgle12qbtf"]
 
 [ext_resource type="Texture2D" uid="uid://catgncy65dwol" path="res://art/tree_background.jpg" id="1"]
 [ext_resource type="Script" uid="uid://c7r0acxyw82o4" path="res://ui/game/user_interface.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://vkh811kit38i" path="res://art/wood_background.jpg" id="3"]
 [ext_resource type="Script" uid="uid://cywdjwc3avenj" path="res://ui/game/problem_container.gd" id="4"]
+[ext_resource type="Script" uid="uid://bslky8v4pe2wj" path="res://ui/game/health_bar.gd" id="4_kb75b"]
 [ext_resource type="Texture2D" uid="uid://cf3nh4knighna" path="res://art/fireball_card.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://jo2yfx6omvad" path="res://art/freeze_card.png" id="6_f4522"]
 [ext_resource type="Script" uid="uid://hs74kh6ctvj0" path="res://spells/spell_button_1.gd" id="6_q4f8x"]
@@ -118,6 +119,7 @@ layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_b5kf5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_hvuor")
 value = 50.0
+script = ExtResource("4_kb75b")
 
 [node name="ManaLabel" type="Label" parent="BottomHUD/ResourceBarContainer"]
 layout_mode = 2

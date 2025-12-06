@@ -136,10 +136,10 @@ func apply_chain_effect(pos: Vector2, spell: Dictionary):
 	for enemy in chainEnemies:
 		if enemy in directEnemies:
 			if enemy.has_method("apply_status"):
-				enemy.apply_status("directShock", spell["damage"], 0)  # Instant damage
+				enemy.apply_status("directShock", spell["damage"], EFFECT_DURATION)  # Instant damage
 		else:
 			if enemy.has_method("apply_status"):
-				enemy.apply_status("shock", spell["damage"], 0)  # Instant damage
+				enemy.apply_status("shock", spell["damage"], EFFECT_DURATION)  # Instant damage
 	
 
 func get_enemies_in_radius(pos: Vector2, radius: float) -> Array:

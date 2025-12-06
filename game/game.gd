@@ -79,6 +79,7 @@ func spawn_enemies(enemies: Array):
 		var spawn = enemy.instantiate()
 		
 		spawn.connect("enemy_died", Callable(Global, "on_enemy_death"))
+		spawn.connect("reached_end", Callable(Global, "on_enemy_reached_end"))  
 		
 		var pickPath = randi_range(1,3)
 		match pickPath:
