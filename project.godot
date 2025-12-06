@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 SpellManager="*res://spells/spell_manager.gd"
 Global="*res://game/global.gd"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=1280
