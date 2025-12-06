@@ -17,7 +17,7 @@ func _on_start_wave_button_pressed() -> void:
 	$BottomHUD/StartWaveButton.visible = false
 	$BottomHUD/UpgradesButton.visible = false
 	$BottomHUD/ProblemContainer.visible = true
-	$BottomHUD/ColorRect.visible = true
+	$BottomHUD/ProblemBackground.visible = true
 
 
 	Global.start_wave()
@@ -27,7 +27,7 @@ func _on_wave_completed(wave: int):
 	$BottomHUD/StartWaveButton.visible = true
 	$BottomHUD/UpgradesButton.visible =true
 	$BottomHUD/ProblemContainer.visible = false
-	$BottomHUD/ColorRect.visible = false
+	$BottomHUD/ProblemBackground.visible = false
 
 
 	
