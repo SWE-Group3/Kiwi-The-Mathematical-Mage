@@ -1,18 +1,18 @@
 extends Control
 
-var _settings: Settings
+var _settings: GameSettings
 
 signal music_volume_changed()
 signal sound_effects_volume_changed()
 
-func get_settings() -> Settings:
+func get_settings() -> GameSettings:
 	return _settings
 
 func _ready() -> void:
-	_settings = load("res://settings/settings.tres")
+	_settings = load("res://game_settings.tres")
 	if _settings == null:
-		_settings = Settings.new()
-		ResourceSaver.save(_settings, "res://settings/settings.tres")
+		_settings = GameSettings.new()
+		ResourceSaver.save(_settings, "res://game_settings.tres")
 	($Background/MusicVolumeContainer/Slider as HSlider).value = _settings.music_volume
 	($Background/SoundEffectsVolumeContainer/Slider as HSlider).value = _settings.sound_effects_volume
 
@@ -25,5 +25,5 @@ func _on_sound_effects_slider_value_changed(value: float) -> void:
 	sound_effects_volume_changed.emit()
 
 func _on_save_and_close_button_pressed() -> void:
-	ResourceSaver.save(_settings, "res://settings/settings.tres")
+	ResourceSaver.save(_settings, "res://game_settings.tres")
 	visible = not visible
