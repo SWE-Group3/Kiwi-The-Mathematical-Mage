@@ -14,8 +14,6 @@ var burn_damage = 0
 var burn_timer = 0.0
 var charge_timer = 0.0
 
-
-
 func _ready():
 	add_to_group("enemies")
 	base_speed = speed
@@ -63,14 +61,14 @@ func die():
 # Unified status effect function
 func apply_status(status_type: String, damage: int, duration: float):
 	match status_type:
-		"burn":
+		"Burn":
 			apply_burn(damage, duration)
-		"freeze":
+		"Freeze":
 			apply_freeze(duration)
-		"shock":
+		"Shock":
 			take_damage(damage - 15)  # Instant damage
 			apply_charge(duration)
-		"directShock":
+		"Direct Shock":
 			take_damage(damage)
 			apply_charge(duration) 
 		_:

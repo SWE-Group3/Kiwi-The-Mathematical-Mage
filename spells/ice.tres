@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://diboh5b8lnaxu"]
+
+[ext_resource type="Script" uid="uid://csxiw013l3vi6" path="res://spells/spell.gd" id="1_r7nqx"]
+[ext_resource type="Texture2D" uid="uid://bkkxo6yqmug7y" path="res://art/freeze_effect.png" id="2_8j537"]
+
+[resource]
+script = ExtResource("1_r7nqx")
+name = "Ice"
+damage = 30
+cost = 3
+color = Color(0, 1, 1, 1)
+effect = "Freeze"
+texture = ExtResource("2_8j537")
+metadata/_custom_type_script = "uid://csxiw013l3vi6"

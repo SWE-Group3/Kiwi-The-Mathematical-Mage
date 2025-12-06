@@ -1,93 +1,53 @@
 extends Node
 
-# Currently selected spell
-var selected_spell = null
-signal mana_used(float)
-
-
-
 #### TO DO
 ### Add to the spells so they have a mana cost and subtract from the mana pool when 
 ### they are cast
 ###
 
-# Spell data structure
-var spells = {
-	"fireball": {
-		"name": "Fireball",
-		"damage": 20,  # Damage per tick
-		"radius": 75,
-		"color": Color.RED,
-		"type": "dot",  # Damage over time
-		"texture": preload("res://art/burn_effect.png"),
-		"cost": 4.0
-	},
-	"ice_blast": {
-		"name": "Ice Blast",
-		"damage": 30,
-		"radius": 100,
-		"color": Color.CYAN,
-		"type": "freeze",
-		"texture": preload("res://art/freeze_effect.png"),
-		"cost": 2.0
-	},
-	"lightning": {
-		"name": "Lightning",
-		"damage": 60,  # Damage per enemy hit
-		"radius": 25,
-		"color": Color.YELLOW,
-		"type": "chain",  # Hits nearby enemies
-		"texture": preload("res://art/charge_effect.png"),
-		"cost": 5.0
-	}
-}
-
 const EFFECT_DURATION = 3.0  # All effects last 3 seconds
+
+var spells: Dictionary[String, Spell]
+var selected_spell: Spell = null # Currently selected spell
+
+signal mana_used(float)
 
 func select_spell(spell_id: String):
 	if spell_id in spells:
-		selected_spell = spell_id
-		print("Selected spell: ", spells[spell_id]["name"])
+		selected_spell = spells[spell_id]
+		print("Selected spell: ", spell_id)
 	else:
 		print("Invalid spell ID: ", spell_id)
 
 func cast_spell_at(position: Vector2):
 	if selected_spell == null:
 		return
-	
-	var spell = spells[selected_spell]
-	print("Casting ", spell["name"], " at ", position)
-	mana_used.emit(spell["cost"])
-	
+	print("Casting ", selected_spell.name, " at ", position)
+	mana_used.emit(selected_spell.cost)
 	# Create visual effect
-	create_spell_effect(position, spell)
-	
+	create_spell_effect(position)
 	# Apply spell effects based on type
-	match spell["type"]:
-		"dot":  # Fireball - damage over time
-			apply_dot_effect(position, spell)
-		"freeze":  # Ice blast - freeze enemies
-			apply_freeze_effect(position, spell)
-		"chain":  # Lightning - damage nearby enemies
-			apply_chain_effect(position, spell)
+	match selected_spell.effect:
+		"Burn":  # Fire - damage over time
+			apply_burn_effect(position)
+		"Freeze":  # Ice - freeze enemies
+			apply_freeze_effect(position)
+		"Charge":  # Lightning - damage nearby enemies
+			apply_charge_effect(position)
 
-func create_spell_effect(pos: Vector2, spell: Dictionary):
+func create_spell_effect(position: Vector2):
 	# Create a simple circle visual effect
 	var sprite := Sprite2D.new()
-	sprite.texture = spell["texture"]
-
+	sprite.texture = selected_spell.texture
 	# Center the image on the clicked position
-	sprite.position = pos
-
+	sprite.position = position
 	# --- SCALE TO MATCH PREVIOUS SIZE ---
 	var tex_size = sprite.texture.get_size()
-	var target_size = spell["radius"] * 2
+	var target_size = selected_spell.radius * 2
 	var scale_factor = target_size / tex_size.x  # assuming square image
 	
 	sprite.scale = Vector2(scale_factor, scale_factor)
-
 	sprite.modulate.a = 0.7
-
 	get_tree().root.add_child(sprite)
 
 	# --- ANIMATE ---
@@ -108,39 +68,38 @@ func create_spell_effect(pos: Vector2, spell: Dictionary):
 	#tween.tween_property(effect, "modulate:a", 0.0, 0.5)
 	#tween.tween_callback(effect.queue_free)
 
-func deal_damage_in_radius(pos: Vector2, radius: float, damage: int):
+func deal_damage_in_radius(position: Vector2, radius: int, damage: int):
 	# Get all enemies in the "enemies" group
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	for enemy in enemies:
-		if enemy.global_position.distance_to(pos) <= radius:
+		if enemy.global_position.distance_to(position) <= radius:
 			if enemy.has_method("take_damage"):
 				enemy.take_damage(damage)
 				print("Hit enemy for ", damage, " damage")
 
 # Unified status effect system
-func apply_dot_effect(pos: Vector2, spell: Dictionary):
-	var enemies = get_enemies_in_radius(pos, spell["radius"])
+func apply_burn_effect(position: Vector2):
+	var enemies = get_enemies_in_radius(position, selected_spell.radius)
 	for enemy in enemies:
 		if enemy.has_method("apply_status"):
-			enemy.apply_status("burn", spell["damage"], EFFECT_DURATION)
+			enemy.apply_status("Burn", selected_spell.damage, EFFECT_DURATION)
 
-func apply_freeze_effect(pos: Vector2, spell: Dictionary):
-	var enemies = get_enemies_in_radius(pos, spell["radius"])
+func apply_freeze_effect(position: Vector2):
+	var enemies = get_enemies_in_radius(position, selected_spell.radius)
 	for enemy in enemies:
 		if enemy.has_method("apply_status"):
-			enemy.apply_status("freeze", spell["damage"], EFFECT_DURATION)
+			enemy.apply_status("Freeze", selected_spell.damage, EFFECT_DURATION)
 
-func apply_chain_effect(pos: Vector2, spell: Dictionary):
-	var directEnemies = get_enemies_in_radius(pos, spell["radius"])
-	var chainEnemies = get_enemies_in_radius(pos, spell["radius"] + 100)
+func apply_charge_effect(position: Vector2):
+	var directEnemies = get_enemies_in_radius(position, selected_spell.radius)
+	var chainEnemies = get_enemies_in_radius(position, selected_spell.radius + 100)
 	for enemy in chainEnemies:
 		if enemy in directEnemies:
 			if enemy.has_method("apply_status"):
-				enemy.apply_status("directShock", spell["damage"], EFFECT_DURATION)  # Instant damage
+				enemy.apply_status("Direct Shock", selected_spell.damage, EFFECT_DURATION)  # Instant damage
 		else:
 			if enemy.has_method("apply_status"):
-				enemy.apply_status("shock", spell["damage"], EFFECT_DURATION)  # Instant damage
-	
+				enemy.apply_status("Shock", selected_spell.damage, EFFECT_DURATION)  # Instant damage
 
 func get_enemies_in_radius(pos: Vector2, radius: float) -> Array:
 	var enemies_in_range = []
@@ -149,3 +108,10 @@ func get_enemies_in_radius(pos: Vector2, radius: float) -> Array:
 		if enemy.global_position.distance_to(pos) <= radius:
 			enemies_in_range.append(enemy)
 	return enemies_in_range
+
+func _ready() -> void:
+	spells = {
+		"Fire" : preload("res://spells/fire.tres"),
+		"Ice" : preload("res://spells/ice.tres"),
+		"Lightning" : preload("res://spells/lightning.tres")
+		}

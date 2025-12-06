@@ -1,12 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://b33tyie7nt1ll"]
+[gd_scene load_steps=14 format=3 uid="uid://b33tyie7nt1ll"]
 
 [ext_resource type="Script" uid="uid://bdaw6o5n7sott" path="res://ui/game/upgrade_menu.gd" id="1_cpgeo"]
 [ext_resource type="Shader" uid="uid://cda0eor1qtote" path="res://ui/menu/blur.gdshader" id="1_jgaba"]
 [ext_resource type="Texture2D" uid="uid://cf3nh4knighna" path="res://art/fireball_card.png" id="3_qoy4f"]
 [ext_resource type="Texture2D" uid="uid://d0xb6r8tq5xyi" path="res://art/menu_tile.png" id="4_gi4mh"]
 [ext_resource type="Texture2D" uid="uid://ch0mqb4gbmmul" path="res://art/upgrade_card.png" id="5_h3u4o"]
+[ext_resource type="Texture2D" uid="uid://cpucbm6weds0w" path="res://art/potency_up_card.png" id="6_8sggs"]
 [ext_resource type="Texture2D" uid="uid://jo2yfx6omvad" path="res://art/freeze_card.png" id="6_mgvak"]
 [ext_resource type="Texture2D" uid="uid://bjpat7klvkpwy" path="res://art/charge_card.png" id="7_803m7"]
+[ext_resource type="Script" uid="uid://c8eyewlamcxq3" path="res://ui/game/upgrade_button.gd" id="7_asus3"]
+[ext_resource type="Texture2D" uid="uid://bq7ny4keifxpn" path="res://art/damage_up_card.png" id="7_yr7tq"]
+[ext_resource type="Texture2D" uid="uid://6cceamr17wfb" path="res://art/cooldown_down_card.png" id="8_0g1oq"]
+[ext_resource type="Texture2D" uid="uid://ci8xvb0w2640k" path="res://art/cost_down_card.png" id="9_asus3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gi4mh"]
 shader = ExtResource("1_jgaba")
@@ -39,38 +44,38 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -82.0
-offset_top = -352.0
+offset_top = -304.0
 offset_right = 82.0
-offset_bottom = -307.0
+offset_bottom = -259.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "Upgrades"
 horizontal_alignment = 1
 
-[node name="SpellContainer" type="VBoxContainer" parent="."]
+[node name="SpellCardContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -384.0
-offset_top = -296.0
-offset_right = 384.0
-offset_bottom = 24.0
+offset_left = -300.0
+offset_top = -248.0
+offset_right = 300.0
+offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = -8
 
-[node name="Row1" type="HSplitContainer" parent="SpellContainer"]
+[node name="FireRow" type="HSplitContainer" parent="SpellCardContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 split_offset = 80
 dragging_enabled = false
 dragger_visibility = 2
 
-[node name="CardCell" type="NinePatchRect" parent="SpellContainer/Row1"]
+[node name="SpellCardCell" type="NinePatchRect" parent="SpellCardContainer/FireRow"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("4_gi4mh")
@@ -79,17 +84,16 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="UpgradeButton" type="TextureButton" parent="SpellContainer/Row1/CardCell"]
+[node name="Texture" type="TextureRect" parent="SpellCardContainer/FireRow/SpellCardCell"]
 layout_mode = 1
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 168.0
 offset_bottom = 248.0
 scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("3_qoy4f")
-texture_disabled = ExtResource("5_h3u4o")
+texture = ExtResource("3_qoy4f")
 
-[node name="InfoCell" type="NinePatchRect" parent="SpellContainer/Row1"]
+[node name="UpgradeCardCell" type="NinePatchRect" parent="SpellCardContainer/FireRow"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("4_gi4mh")
@@ -98,71 +102,95 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="UpgradeCards" type="HBoxContainer" parent="SpellContainer/Row1/InfoCell"]
+[node name="Container" type="HBoxContainer" parent="SpellCardContainer/FireRow/UpgradeCardCell"]
 texture_filter = 1
-layout_mode = 0
+layout_mode = 1
 offset_top = 7.9999995
-offset_right = 1697.4998
-offset_bottom = 247.99998
+offset_right = 1280.0
+offset_bottom = 248.0
 scale = Vector2(0.4, 0.4)
-theme_override_constants/separation = 220
+theme_override_constants/separation = 0
 
-[node name="UpgradeDamage1" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+[node name="DamagePunchCard1" type="TextureButton" parent="SpellCardContainer/FireRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("7_yr7tq")
+script = ExtResource("7_asus3")
+spell_name = "Fire"
+property_name = "Damage"
 
-[node name="UpgradePotency1" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+[node name="PotencyPunchCard1" type="TextureButton" parent="SpellCardContainer/FireRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("6_8sggs")
+script = ExtResource("7_asus3")
+spell_name = "Fire"
+property_name = "Potency"
 
-[node name="UpgradeCoolDown1" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+[node name="CooldownPunchCard1" type="TextureButton" parent="SpellCardContainer/FireRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("8_0g1oq")
+script = ExtResource("7_asus3")
+spell_name = "Fire"
+property_name = "Cooldown"
 
-[node name="UpgradeCost1" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+[node name="CostPunchCard1" type="TextureButton" parent="SpellCardContainer/FireRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("9_asus3")
+script = ExtResource("7_asus3")
+spell_name = "Fire"
+property_name = "Cost"
 
-[node name="UpgradeDamage2" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+[node name="DamagePunchCard2" type="TextureButton" parent="SpellCardContainer/FireRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("7_yr7tq")
+script = ExtResource("7_asus3")
+spell_name = "Fire"
+property_name = "Damage"
 
-[node name="UpgradePotency2" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+[node name="PotencyPunchCard2" type="TextureButton" parent="SpellCardContainer/FireRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("6_8sggs")
+script = ExtResource("7_asus3")
+spell_name = "Fire"
+property_name = "Potency"
 
-[node name="UpgradeCoolDown2" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+[node name="CooldownPunchCard2" type="TextureButton" parent="SpellCardContainer/FireRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("8_0g1oq")
+script = ExtResource("7_asus3")
+spell_name = "Fire"
+property_name = "Cooldown"
 
-[node name="UpgradeCost2" type="TextureButton" parent="SpellContainer/Row1/InfoCell/UpgradeCards"]
+[node name="CostPunchCard2" type="TextureButton" parent="SpellCardContainer/FireRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("9_asus3")
+script = ExtResource("7_asus3")
+spell_name = "Fire"
+property_name = "Cost"
 
-[node name="Row2" type="HSplitContainer" parent="SpellContainer"]
+[node name="IceRow" type="HSplitContainer" parent="SpellCardContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 split_offset = 80
 dragging_enabled = false
 dragger_visibility = 2
 
-[node name="CardCell" type="NinePatchRect" parent="SpellContainer/Row2"]
+[node name="SpellCardCell" type="NinePatchRect" parent="SpellCardContainer/IceRow"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("4_gi4mh")
@@ -171,16 +199,16 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="UpgradeButton" type="TextureButton" parent="SpellContainer/Row2/CardCell"]
+[node name="Texture" type="TextureRect" parent="SpellCardContainer/IceRow/SpellCardCell"]
 layout_mode = 1
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 168.0
 offset_bottom = 248.0
 scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("6_mgvak")
+texture = ExtResource("6_mgvak")
 
-[node name="InfoCell" type="NinePatchRect" parent="SpellContainer/Row2"]
+[node name="UpgradeCardCell" type="NinePatchRect" parent="SpellCardContainer/IceRow"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("4_gi4mh")
@@ -189,71 +217,95 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="UpgradeCards" type="HBoxContainer" parent="SpellContainer/Row2/InfoCell"]
+[node name="Container" type="HBoxContainer" parent="SpellCardContainer/IceRow/UpgradeCardCell"]
 texture_filter = 1
-layout_mode = 0
+layout_mode = 1
 offset_top = 7.9999995
-offset_right = 1697.4998
-offset_bottom = 247.99998
+offset_right = 1280.0
+offset_bottom = 248.0
 scale = Vector2(0.4, 0.4)
-theme_override_constants/separation = 220
+theme_override_constants/separation = 0
 
-[node name="UpgradeDamage1" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+[node name="DamagePunchCard1" type="TextureButton" parent="SpellCardContainer/IceRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("7_yr7tq")
+script = ExtResource("7_asus3")
+spell_name = "Ice"
+property_name = "Damage"
 
-[node name="UpgradePotency1" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+[node name="PotencyPunchCard1" type="TextureButton" parent="SpellCardContainer/IceRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("6_8sggs")
+script = ExtResource("7_asus3")
+spell_name = "Ice"
+property_name = "Potency"
 
-[node name="UpgradeCoolDown1" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+[node name="CooldownPunchCard1" type="TextureButton" parent="SpellCardContainer/IceRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("8_0g1oq")
+script = ExtResource("7_asus3")
+spell_name = "Ice"
+property_name = "Cooldown"
 
-[node name="UpgradeCost1" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+[node name="CostPunchCard1" type="TextureButton" parent="SpellCardContainer/IceRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("9_asus3")
+script = ExtResource("7_asus3")
+spell_name = "Ice"
+property_name = "Cost"
 
-[node name="UpgradeDamage2" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+[node name="DamagePunchCard2" type="TextureButton" parent="SpellCardContainer/IceRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("7_yr7tq")
+script = ExtResource("7_asus3")
+spell_name = "Ice"
+property_name = "Damage"
 
-[node name="UpgradePotency2" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+[node name="PotencyPunchCard2" type="TextureButton" parent="SpellCardContainer/IceRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("6_8sggs")
+script = ExtResource("7_asus3")
+spell_name = "Ice"
+property_name = "Potency"
 
-[node name="UpgradeCoolDown2" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+[node name="CooldownPunchCard2" type="TextureButton" parent="SpellCardContainer/IceRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("8_0g1oq")
+script = ExtResource("7_asus3")
+spell_name = "Ice"
+property_name = "Cooldown"
 
-[node name="UpgradeCost2" type="TextureButton" parent="SpellContainer/Row2/InfoCell/UpgradeCards"]
+[node name="CostPunchCard2" type="TextureButton" parent="SpellCardContainer/IceRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("9_asus3")
+script = ExtResource("7_asus3")
+spell_name = "Ice"
+property_name = "Cost"
 
-[node name="Row3" type="HSplitContainer" parent="SpellContainer"]
+[node name="LightningRow" type="HSplitContainer" parent="SpellCardContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 split_offset = 80
 dragging_enabled = false
 dragger_visibility = 2
 
-[node name="CardCell" type="NinePatchRect" parent="SpellContainer/Row3"]
+[node name="SpellCardCell" type="NinePatchRect" parent="SpellCardContainer/LightningRow"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("4_gi4mh")
@@ -262,16 +314,16 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="UpgradeButton" type="TextureButton" parent="SpellContainer/Row3/CardCell"]
+[node name="Texture" type="TextureRect" parent="SpellCardContainer/LightningRow/SpellCardCell"]
 layout_mode = 1
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 168.0
 offset_bottom = 248.0
 scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("7_803m7")
+texture = ExtResource("7_803m7")
 
-[node name="InfoCell" type="NinePatchRect" parent="SpellContainer/Row3"]
+[node name="UpgradeCardCell" type="NinePatchRect" parent="SpellCardContainer/LightningRow"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("4_gi4mh")
@@ -280,62 +332,86 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="UpgradeCards" type="HBoxContainer" parent="SpellContainer/Row3/InfoCell"]
+[node name="Container" type="HBoxContainer" parent="SpellCardContainer/LightningRow/UpgradeCardCell"]
 texture_filter = 1
-layout_mode = 0
+layout_mode = 1
 offset_top = 7.9999995
-offset_right = 1697.4998
-offset_bottom = 247.99998
+offset_right = 1280.0
+offset_bottom = 248.0
 scale = Vector2(0.4, 0.4)
-theme_override_constants/separation = 220
+theme_override_constants/separation = 0
 
-[node name="UpgradeDamage1" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
+[node name="DamagePunchCard1" type="TextureButton" parent="SpellCardContainer/LightningRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("7_yr7tq")
+script = ExtResource("7_asus3")
+spell_name = "Lightning"
+property_name = "Damage"
 
-[node name="UpgradePotency1" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
+[node name="PotencyPunchCard1" type="TextureButton" parent="SpellCardContainer/LightningRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("6_8sggs")
+script = ExtResource("7_asus3")
+spell_name = "Lightning"
+property_name = "Potency"
 
-[node name="UpgradeCoolDown1" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
+[node name="CooldownPunchCard1" type="TextureButton" parent="SpellCardContainer/LightningRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("8_0g1oq")
+script = ExtResource("7_asus3")
+spell_name = "Lightning"
+property_name = "Cooldown"
 
-[node name="UpgradeCost1" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
+[node name="CostPunchCard1" type="TextureButton" parent="SpellCardContainer/LightningRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("9_asus3")
+script = ExtResource("7_asus3")
+spell_name = "Lightning"
+property_name = "Cost"
 
-[node name="UpgradeDamage2" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
+[node name="DamagePunchCard2" type="TextureButton" parent="SpellCardContainer/LightningRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("7_yr7tq")
+script = ExtResource("7_asus3")
+spell_name = "Lightning"
+property_name = "Damage"
 
-[node name="UpgradePotency2" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
+[node name="PotencyPunchCard2" type="TextureButton" parent="SpellCardContainer/LightningRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("6_8sggs")
+script = ExtResource("7_asus3")
+spell_name = "Lightning"
+property_name = "Potency"
 
-[node name="UpgradeCoolDown2" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
+[node name="CooldownPunchCard2" type="TextureButton" parent="SpellCardContainer/LightningRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("8_0g1oq")
+script = ExtResource("7_asus3")
+spell_name = "Lightning"
+property_name = "Cooldown"
 
-[node name="UpgradeCost2" type="TextureButton" parent="SpellContainer/Row3/InfoCell/UpgradeCards"]
+[node name="CostPunchCard2" type="TextureButton" parent="SpellCardContainer/LightningRow/UpgradeCardCell/Container"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-disabled = true
-texture_disabled = ExtResource("5_h3u4o")
+texture_normal = ExtResource("5_h3u4o")
+texture_disabled = ExtResource("9_asus3")
+script = ExtResource("7_asus3")
+spell_name = "Lightning"
+property_name = "Cost"
 
 [node name="CloseButton" type="Button" parent="."]
 layout_mode = 1
@@ -353,7 +429,52 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "Close"
 
-[connection signal="pressed" from="SpellContainer/Row1/CardCell/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
-[connection signal="pressed" from="SpellContainer/Row2/CardCell/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
-[connection signal="pressed" from="SpellContainer/Row3/CardCell/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/DamagePunchCard1" to="SpellCardContainer/FireRow/UpgradeCardCell/Container/DamagePunchCard1" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/DamagePunchCard1" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/PotencyPunchCard1" to="SpellCardContainer/FireRow/UpgradeCardCell/Container/PotencyPunchCard1" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/PotencyPunchCard1" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/CooldownPunchCard1" to="SpellCardContainer/FireRow/UpgradeCardCell/Container/CooldownPunchCard1" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/CooldownPunchCard1" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/CostPunchCard1" to="SpellCardContainer/FireRow/UpgradeCardCell/Container/CostPunchCard1" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/CostPunchCard1" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/DamagePunchCard2" to="SpellCardContainer/FireRow/UpgradeCardCell/Container/DamagePunchCard2" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/DamagePunchCard2" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/PotencyPunchCard2" to="SpellCardContainer/FireRow/UpgradeCardCell/Container/PotencyPunchCard2" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/PotencyPunchCard2" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/CooldownPunchCard2" to="SpellCardContainer/FireRow/UpgradeCardCell/Container/CooldownPunchCard2" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/CooldownPunchCard2" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/CostPunchCard2" to="SpellCardContainer/FireRow/UpgradeCardCell/Container/CostPunchCard2" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/FireRow/UpgradeCardCell/Container/CostPunchCard2" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/DamagePunchCard1" to="SpellCardContainer/IceRow/UpgradeCardCell/Container/DamagePunchCard1" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/DamagePunchCard1" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/PotencyPunchCard1" to="SpellCardContainer/IceRow/UpgradeCardCell/Container/PotencyPunchCard1" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/PotencyPunchCard1" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/CooldownPunchCard1" to="SpellCardContainer/IceRow/UpgradeCardCell/Container/CooldownPunchCard1" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/CooldownPunchCard1" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/CostPunchCard1" to="SpellCardContainer/IceRow/UpgradeCardCell/Container/CostPunchCard1" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/CostPunchCard1" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/DamagePunchCard2" to="SpellCardContainer/IceRow/UpgradeCardCell/Container/DamagePunchCard2" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/DamagePunchCard2" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/PotencyPunchCard2" to="SpellCardContainer/IceRow/UpgradeCardCell/Container/PotencyPunchCard2" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/PotencyPunchCard2" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/CooldownPunchCard2" to="SpellCardContainer/IceRow/UpgradeCardCell/Container/CooldownPunchCard2" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/CooldownPunchCard2" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/CostPunchCard2" to="SpellCardContainer/IceRow/UpgradeCardCell/Container/CostPunchCard2" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/IceRow/UpgradeCardCell/Container/CostPunchCard2" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/DamagePunchCard1" to="SpellCardContainer/LightningRow/UpgradeCardCell/Container/DamagePunchCard1" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/DamagePunchCard1" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/PotencyPunchCard1" to="SpellCardContainer/LightningRow/UpgradeCardCell/Container/PotencyPunchCard1" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/PotencyPunchCard1" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/CooldownPunchCard1" to="SpellCardContainer/LightningRow/UpgradeCardCell/Container/CooldownPunchCard1" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/CooldownPunchCard1" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/CostPunchCard1" to="SpellCardContainer/LightningRow/UpgradeCardCell/Container/CostPunchCard1" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/CostPunchCard1" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/DamagePunchCard2" to="SpellCardContainer/LightningRow/UpgradeCardCell/Container/DamagePunchCard2" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/DamagePunchCard2" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/PotencyPunchCard2" to="SpellCardContainer/LightningRow/UpgradeCardCell/Container/PotencyPunchCard2" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/PotencyPunchCard2" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/CooldownPunchCard2" to="SpellCardContainer/LightningRow/UpgradeCardCell/Container/CooldownPunchCard2" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/CooldownPunchCard2" to="." method="_on_upgrade_requested"]
+[connection signal="pressed" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/CostPunchCard2" to="SpellCardContainer/LightningRow/UpgradeCardCell/Container/CostPunchCard2" method="_on_pressed"]
+[connection signal="upgrade_requested" from="SpellCardContainer/LightningRow/UpgradeCardCell/Container/CostPunchCard2" to="." method="_on_upgrade_requested"]
 [connection signal="pressed" from="CloseButton" to="." method="hide"]
