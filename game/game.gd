@@ -16,7 +16,6 @@ func _on_pause_pressed() -> void:
 
 func _on_spell_1_pressed() -> void:
 	SpellManager.select_spell("fireball")  # Changed
-
 	print("Casting Spell 1")
 
 func _on_spell_2_pressed() -> void:
@@ -31,67 +30,60 @@ func _on_spell_3_pressed() -> void:
 #takes in a number of spawn points, loops till there are no more points
 #and returns how many enemies where spawned and the list of enemies to spawn
 func pick_enemies(points: int) -> Dictionary:
-	print("hello from pick_enemies")
 	var enemies: Array[PackedScene] = []
 	var points_left = points
-	print("points: ", points)
-	print("pointsleft:", points_left)
 	
+	# loops while there are still points
 	while points_left > 0:
-		print("made it into the loop")
-		var pickEnemy = randi_range(1, 3)
-		var cost = 0
-		var enemy_scene: PackedScene = null
-		print ("enemy who will be picked: ", pickEnemy)
+		var pickEnemy = randi_range(1, 3) # pick which enemy to buy
+		var cost = 0 # init cost
+		var enemy_scene: PackedScene = null # init enemy_scene to null
 		match pickEnemy:
-			1:
-				cost = 1
-				if points_left >= cost:
-					enemy_scene = preload("res://predators/stoat/stoat_path_follow.tscn")
-					print("stoat chosen")
-			2:
-				cost = 12
-				if points_left >= cost:
-					enemy_scene = preload("res://predators/cat/cat_path_follow.tscn")
-					print("cat chosen")
-			3:
-				cost = 24
-				if points_left >= cost:
-					enemy_scene = preload("res://predators/dog/dog_path_follow.tscn")
-					print("dog chosen")
-			_:
+			1: # stoats
+				cost = 1 # cost of one stoat
+				if points_left >= cost: # if can buy then buy
+					enemy_scene = preload("res://predators/stoat/stoat_path_follow.tscn") # loads the stoat scene in 
+			2: # cats
+				cost = 12 # cost of one cat
+				if points_left >= cost: # if can buy then buy
+					enemy_scene = preload("res://predators/cat/cat_path_follow.tscn") # loads the cat scene in
+			3: # dogs
+				cost = 24 # cost of one dog
+				if points_left >= cost: # if can buy then buy
+					enemy_scene = preload("res://predators/dog/dog_path_follow.tscn") # loads the dog scene in
+			_: # default
 				print("no enemy chosen")
 
 		# Add to the list
-		if enemy_scene != null:
-			enemies.append(enemy_scene)
-			points_left -= cost
+		if enemy_scene != null: # only adds if there is an enemy_scene
+			enemies.append(enemy_scene) # adds the enemy_scene to an array
+			points_left -= cost # subtracts cost of enemy from total points
 
 	# Return both values
 	return {
-		"count": enemies.size(),
-		"list": enemies
+		"count": enemies.size(), # number of enemies spawned
+		"list": enemies # list of enmies to spawn
 	}
 	
+# Takes in an Array of enemy_scenes and spawns them with a one second delay
 func spawn_enemies(enemies: Array):
-	#var global = get_node("res://game/global.gd")
-	for enemy in enemies:
-		var spawn = enemy.instantiate()
+	for enemy in enemies: # gets one enemy from the array
+		var spawn = enemy.instantiate() 
 		
-		spawn.connect("enemy_died", Callable(Global, "on_enemy_death"))
-		spawn.connect("reached_end", Callable(Global, "on_enemy_reached_end"))  
+		spawn.connect("enemy_died", Callable(Global, "on_enemy_death")) # recieves signal on enemy death and calls on_enemy_death function
+		spawn.connect("reached_end", Callable(Global, "on_enemy_reached_end")) # recieves signal when enemy reaches the end of path and calles oon_enemy_reached_end functionn
 		
-		var pickPath = randi_range(1,3)
+		var pickPath = randi_range(1,3) # picks which path to spawn enemy on
 		match pickPath:
-			1: 
-				$TopPath.add_child(spawn)
-			2:
+			1: # top path
+				$TopPath.add_child(spawn) # makes the enemy a child of the path
+			2: # middle path
 				$MiddlePath.add_child(spawn)
-			3: 
+			3: # bottom path
 				$BottomPath.add_child(spawn)
 				
-		print("enemy spawned")
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(1.0).timeout # waits one second before moving on
 
+# generates .1 mana every one second
 func _on_mana_generator_timeout() -> void:
-	mana_generated.emit(0.1)
+	mana_generated.emit(0.1) # emits a signel of .1
