@@ -1,11 +1,16 @@
 extends Control
 
 # Called when the node enters the scene tree for the first time.
+@onready var wave_label = $ScoreText
 func _ready() -> void:
 	Global.math_problem_factory = MathProblemFactories.add_sub_problem_factory.bind(false);
 	$MainButtonContainer/StartButton.grab_focus()
+	
+	if Global.wave_number > 1:
+		wave_label.text = "Wave Reached: " + str(Global.wave_number) +"\n" + "Highest Wave:" + str(Global.highest_wave)
 
 func _on_start_button_pressed() -> void:
+	Global.reset()
 	get_tree().change_scene_to_file("res://game/game.tscn")
 
 func _on_quit_button_pressed() -> void:
