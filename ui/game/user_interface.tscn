@@ -133,37 +133,49 @@ value = 7.0
 
 [node name="UpgradesButton" type="Button" parent="BottomHUD"]
 layout_mode = 0
-offset_left = 306.0
-offset_top = 32.0
-offset_right = 486.0
-offset_bottom = 128.0
+offset_left = 397.0
+offset_top = 31.0
+offset_right = 577.0
+offset_bottom = 127.0
 theme_override_font_sizes/font_size = 32
 text = "Upgrades
 "
 
 [node name="StartWaveButton" type="Button" parent="BottomHUD"]
 layout_mode = 0
-offset_left = 518.0
-offset_top = 32.0
-offset_right = 698.0
-offset_bottom = 128.0
+offset_left = 665.0
+offset_top = 31.0
+offset_right = 845.0
+offset_bottom = 127.0
 theme_override_font_sizes/font_size = 32
 text = "Start Wave
 "
 
-[node name="ProblemContainer" type="VBoxContainer" parent="BottomHUD"]
+[node name="ColorRect" type="ColorRect" parent="BottomHUD"]
 layout_mode = 0
-offset_left = 730.0
-offset_top = 20.0
+offset_left = 301.0
+offset_top = 16.0
 offset_right = 930.0
-offset_bottom = 140.0
+offset_bottom = 144.0
+color = Color(0, 0, 0, 1)
+
+[node name="ProblemContainer" type="VBoxContainer" parent="BottomHUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.33515626
+anchor_bottom = -0.041666668
+offset_left = 730.0
+offset_top = 16.0
+offset_right = 930.0
+offset_bottom = 150.0
 alignment = 1
 script = ExtResource("4")
 metadata/_edit_use_anchors_ = true
 
 [node name="ProblemLabel" type="Label" parent="BottomHUD/ProblemContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
 
 [node name="AnswerTextField" type="LineEdit" parent="BottomHUD/ProblemContainer"]
 layout_mode = 2
