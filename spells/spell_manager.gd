@@ -13,7 +13,7 @@ signal mana_used(float)
 
 # Spell data structure
 var spells = {
-	"fireball": {
+	"Fire": {
 		"name": "Fireball",
 		"damage": 20,  # Damage per tick
 		"radius": 75,
@@ -22,7 +22,7 @@ var spells = {
 		"texture": preload("res://art/burn_effect.png"),
 		"cost": 4.0
 	},
-	"ice_blast": {
+	"Ice": {
 		"name": "Ice Blast",
 		"damage": 30,
 		"radius": 100,
@@ -31,7 +31,7 @@ var spells = {
 		"texture": preload("res://art/freeze_effect.png"),
 		"cost": 2.0
 	},
-	"lightning": {
+	"Lightning": {
 		"name": "Lightning",
 		"damage": 60,  # Damage per enemy hit
 		"radius": 25,
