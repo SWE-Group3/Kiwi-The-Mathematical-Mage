@@ -129,7 +129,6 @@ layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_b5kf5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_i2arf")
 max_value = 10.0
-value = 7.0
 
 [node name="UpgradesButton" type="Button" parent="BottomHUD"]
 layout_mode = 0
@@ -151,7 +150,8 @@ theme_override_font_sizes/font_size = 32
 text = "Start Wave
 "
 
-[node name="ProbelmBackground" type="ColorRect" parent="BottomHUD"]
+[node name="ProblemBackground" type="ColorRect" parent="BottomHUD"]
+visible = false
 layout_mode = 0
 offset_left = 301.0
 offset_top = 16.0
@@ -160,9 +160,11 @@ offset_bottom = 144.0
 color = Color(0, 0, 0, 1)
 
 [node name="ProblemContainer" type="VBoxContainer" parent="BottomHUD"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.33515626
+anchor_top = -0.041666668
 anchor_bottom = -0.041666668
 offset_left = 730.0
 offset_top = 16.0
@@ -207,18 +209,21 @@ alignment = 1
 [node name="SpellButton1" type="Button" parent="BottomHUD/SpellContainer"]
 texture_filter = 1
 layout_mode = 2
+disabled = true
 icon = ExtResource("5")
 script = ExtResource("6_q4f8x")
 
 [node name="SpellButton2" type="Button" parent="BottomHUD/SpellContainer"]
 texture_filter = 1
 layout_mode = 2
+disabled = true
 icon = ExtResource("6_f4522")
 script = ExtResource("7_pe3dc")
 
 [node name="SpellButton3" type="Button" parent="BottomHUD/SpellContainer"]
 texture_filter = 1
 layout_mode = 2
+disabled = true
 icon = ExtResource("7_q287o")
 script = ExtResource("10")
 

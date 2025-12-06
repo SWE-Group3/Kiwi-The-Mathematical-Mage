@@ -13,7 +13,6 @@ func regen_math_problem():
 	math_problem = math_problem_factory.call(difficulty());
 	
 func start_wave() -> void:
-	print("told to start wave!")
 	var game_node = get_node("/root/Game")
 	wave_started.emit(wave_number)
 	var spawn_points = wave_number * 5
