@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ctlvh5xp0b35v" path="res://ui/menu/main_menu.gd" id="1_4gkdq"]
 [ext_resource type="Texture2D" uid="uid://cgpj3dasxadii" path="res://art/ai_kiwi.png" id="2_yc8k7"]
 [ext_resource type="PackedScene" uid="uid://bugep6k2bkti2" path="res://ui/menu/options_menu.tscn" id="3_4aijq"]
-[ext_resource type="AudioStream" uid="uid://c14rfh7sw7acd" path="res://audio/upgrade_menu_theme.mp3" id="4_8gmgf"]
+[ext_resource type="AudioStream" uid="uid://i4txoepetvnv" path="res://audio/super_epic_kiwi_time_or_something.mp3" id="4_4gkdq"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -108,7 +108,7 @@ visible = false
 layout_mode = 1
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_8gmgf")
+stream = ExtResource("4_4gkdq")
 autoplay = true
 
 [node name="ScoreText" type="Label" parent="."]
