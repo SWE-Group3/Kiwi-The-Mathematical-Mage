@@ -58,8 +58,7 @@ script = ExtResource("1_j5wjh")
 
 [node name="UserInterface" parent="." instance=ExtResource("2_7jktm")]
 
-[node name="SpawnTimer" type="Timer" parent="UserInterface"]
-wait_time = 5.0
+[node name="ManaGenerator" type="Timer" parent="UserInterface"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -83,4 +82,4 @@ curve = SubResource("Curve2D_fc0e3")
 [node name="BottomPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_7jktm")
 
-[connection signal="timeout" from="UserInterface/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="UserInterface/ManaGenerator" to="." method="_on_mana_generator_timeout"]

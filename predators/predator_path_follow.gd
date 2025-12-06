@@ -3,13 +3,18 @@ extends PathFollow2D
 @export var speed: float = 100.0
 @export var health: int = 100
 signal enemy_died
+signal reached_end
 
 var base_speed: float
 var current_speed: float
 var is_frozen = false
 var is_burning = false
+var is_charged = false
 var burn_damage = 0
 var burn_timer = 0.0
+var charge_timer = 0.0
+
+
 
 func _ready():
 	add_to_group("enemies")
@@ -26,10 +31,23 @@ func _process(delta):
 		if burn_timer <= 0:
 			is_burning = false
 			modulate = Color.WHITE
+			
+	# Handle charge color effect
+	if charge_timer > 0:
+		charge_timer -= delta
+		if charge_timer <= 0:
+			is_charged = false
+			modulate = Color.WHITE
+			
+
 
 func _physics_process(delta):
 	if not is_frozen:
 		progress += current_speed * delta
+		
+	if progress_ratio >= 1.0:
+			emit_signal("reached_end")
+			queue_free()
 
 func take_damage(amount: int):
 	health -= amount
@@ -51,10 +69,17 @@ func apply_status(status_type: String, damage: int, duration: float):
 			apply_freeze(duration)
 		"shock":
 			take_damage(damage - 15)  # Instant damage
+			apply_charge(duration)
 		"directShock":
 			take_damage(damage)
+			apply_charge(duration) 
 		_:
 			print("Unknown status: ", status_type)
+			
+func apply_charge(duration: float):
+	is_charged = true
+	charge_timer = duration
+	modulate = Color(1.061, 0.887, 0.321, 0.812)
 
 func apply_burn(damage_per_tick: int, duration: float):
 	is_burning = true

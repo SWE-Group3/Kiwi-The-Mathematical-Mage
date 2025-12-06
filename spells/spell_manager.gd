@@ -2,6 +2,8 @@ extends Node
 
 # Currently selected spell
 var selected_spell = null
+signal mana_used(float)
+
 
 
 #### TO DO
@@ -17,7 +19,8 @@ var spells = {
 		"radius": 75,
 		"color": Color.RED,
 		"type": "dot",  # Damage over time
-		"texture": preload("res://art/burn_effect.png")
+		"texture": preload("res://art/burn_effect.png"),
+		"cost": 4.0
 	},
 	"ice_blast": {
 		"name": "Ice Blast",
@@ -25,7 +28,8 @@ var spells = {
 		"radius": 100,
 		"color": Color.CYAN,
 		"type": "freeze",
-		"texture": preload("res://art/freeze_effect.png")
+		"texture": preload("res://art/freeze_effect.png"),
+		"cost": 2.0
 	},
 	"lightning": {
 		"name": "Lightning",
@@ -33,7 +37,8 @@ var spells = {
 		"radius": 25,
 		"color": Color.YELLOW,
 		"type": "chain",  # Hits nearby enemies
-		"texture": preload("res://art/charge_effect.png")
+		"texture": preload("res://art/charge_effect.png"),
+		"cost": 5.0
 	}
 }
 
@@ -52,6 +57,7 @@ func cast_spell_at(position: Vector2):
 	
 	var spell = spells[selected_spell]
 	print("Casting ", spell["name"], " at ", position)
+	mana_used.emit(spell["cost"])
 	
 	# Create visual effect
 	create_spell_effect(position, spell)
@@ -130,10 +136,10 @@ func apply_chain_effect(pos: Vector2, spell: Dictionary):
 	for enemy in chainEnemies:
 		if enemy in directEnemies:
 			if enemy.has_method("apply_status"):
-				enemy.apply_status("directShock", spell["damage"], 0)  # Instant damage
+				enemy.apply_status("directShock", spell["damage"], EFFECT_DURATION)  # Instant damage
 		else:
 			if enemy.has_method("apply_status"):
-				enemy.apply_status("shock", spell["damage"], 0)  # Instant damage
+				enemy.apply_status("shock", spell["damage"], EFFECT_DURATION)  # Instant damage
 	
 
 func get_enemies_in_radius(pos: Vector2, radius: float) -> Array:
