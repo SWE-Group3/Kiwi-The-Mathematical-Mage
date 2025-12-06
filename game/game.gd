@@ -2,6 +2,7 @@ extends Node
 var selectedSpell := 0
 var enemiesToSpawn
 
+
 @export var burnMana: float = 4.0
 @export var freezeMana: float = 2.0
 @export var chargeMana: float = 5.0
@@ -9,6 +10,7 @@ var enemiesToSpawn
 signal mana_generated(float)
 
 func _ready() -> void:
+	Global.tilemap_layer = $TileMapLayer  # assign the TileMap node
 	randomize()
 
 func _on_pause_pressed() -> void:
