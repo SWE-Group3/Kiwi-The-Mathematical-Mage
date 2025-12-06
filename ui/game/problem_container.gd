@@ -1,5 +1,8 @@
 extends VBoxContainer
 
+signal mana_generated(float)
+
+
 
 func _ready() -> void:
 	_focus_answer_box()
@@ -16,6 +19,7 @@ func _on_submit_button_pressed() -> void:
 	if Global.math_problem.verify_answer($AnswerTextField.text):
 		$FeedbackLabel.text = "Correct!"
 		$FeedbackLabel.add_theme_color_override("font_color", Color.GREEN)
+		mana_generated.emit(Global.math_problem.mana_reward)
 		await get_tree().create_timer(1.0).timeout
 		$FeedbackLabel.visible = false
 		generate_problem()

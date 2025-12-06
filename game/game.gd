@@ -2,6 +2,11 @@ extends Node
 var selectedSpell := 0
 var enemiesToSpawn
 
+@export var burnMana: float = 4.0
+@export var freezeMana: float = 2.0
+@export var chargeMana: float = 5.0
+
+signal mana_generated(float)
 
 func _ready() -> void:
 	randomize()
@@ -11,6 +16,7 @@ func _on_pause_pressed() -> void:
 
 func _on_spell_1_pressed() -> void:
 	SpellManager.select_spell("fireball")  # Changed
+
 	print("Casting Spell 1")
 
 func _on_spell_2_pressed() -> void:
@@ -21,46 +27,9 @@ func _on_spell_3_pressed() -> void:
 	SpellManager.select_spell("lightning")  # Changed
 	print("Casting Spell 3")
 
-func _on_spell_4_pressed() -> void:
-	SpellManager.select_spell("fireball")  # Changed (or add a 4th spell)
-	print("Casting Spell 4")
 	
 #takes in a number of spawn points, loops till there are no more points
-#and returns how many enemies where spawned
-#func pick_enemies(points:int) -> int:
-	#var pickEnemy = randi_range(1, 3)
-	#var pickPath = randi_range(1,3)
-	#var enemiesSpawned = 0
-#
-	#var _enemy: Resource
-	#while points:
-		#match pickEnemy:
-			#1:
-				#if points >= 1:
-					#_enemy = preload("res://predators/stoat/stoat_path_follow.tscn")
-					#enemiesSpawned += 1
-					#points -= 1
-			#2:
-				#if points >= 12:
-					#_enemy = preload("res://predators/cat/cat_path_follow.tscn")
-					#enemiesSpawned += 1
-					#points -= 12
-			#3:
-				#if points >= 24:
-					#_enemy = preload("res://predators/dog/dog_path_follow.tscn")
-					#enemiesSpawned += 1
-					#points -= 24
-#
-		#match pickPath:
-			#1: 
-				#$TopPath.add_child(_enemy.instantiate())
-			#2:
-				#$MiddlePath.add_child(_enemy.instantiate())
-			#3: 
-				#$BottomPath.add_child(_enemy.instantiate())
-				#
-	#return enemiesSpawned
-
+#and returns how many enemies where spawned and the list of enemies to spawn
 func pick_enemies(points: int) -> Dictionary:
 	print("hello from pick_enemies")
 	var enemies: Array[PackedScene] = []
@@ -92,10 +61,6 @@ func pick_enemies(points: int) -> Dictionary:
 					print("dog chosen")
 			_:
 				print("no enemy chosen")
-		# If enemy_scene wasn’t valid (points too low), break to avoid infinite loop
-		#if enemy_scene == null:
-			#print("im taking a break!")
-			#break
 
 		# Add to the list
 		if enemy_scene != null:
@@ -128,25 +93,5 @@ func spawn_enemies(enemies: Array):
 		print("enemy spawned")
 		await get_tree().create_timer(1.0).timeout
 
-
-
-#func _on_spawn_timer_timeout() -> void:
-	#var pickEnemy = randi_range(1, 3)
-	#var pickPath = randi_range(1,3)
-#
-	#var _enemy: Resource
-	#match pickEnemy:
-		#1:
-			#_enemy = preload("res://predators/stoat/stoat_path_follow.tscn")
-		#2:
-			#_enemy = preload("res://predators/cat/cat_path_follow.tscn")
-		#3:
-			#_enemy = preload("res://predators/dog/dog_path_follow.tscn")
-	#
-	#match pickPath:
-		#1: 
-			#$TopPath.add_child(_enemy.instantiate())
-		#2:
-			#$MiddlePath.add_child(_enemy.instantiate())
-		#3: 
-			#$BottomPath.add_child(_enemy.instantiate())
+func _on_mana_generator_timeout() -> void:
+	mana_generated.emit(0.1)
