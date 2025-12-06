@@ -2,6 +2,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 @onready var wave_label = $ScoreText
+
 func _ready() -> void:
 	Global.math_problem_factory = MathProblemFactories.add_sub_problem_factory.bind(false);
 	$MainButtonContainer/StartButton.grab_focus()
@@ -28,8 +29,5 @@ func _on_multiplication_button_pressed() -> void:
 func _on_division_button_pressed() -> void:
 	Global.math_problem_factory = MathProblemFactories.division_problem_factory
 
-func _on_options_menu_ready() -> void:
-	_on_music_volume_changed($OptionsMenu.get_options().music_volume)
-
-func _on_music_volume_changed(value: float) -> void:
-	$BackgroundMusic.volume_linear = value
+func _on_music_volume_changed() -> void:
+	$BackgroundMusic.volume_linear = $OptionsMenu.get_settings().music_volume

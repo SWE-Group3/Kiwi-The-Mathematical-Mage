@@ -1,35 +1,29 @@
 extends Control
 
-var _options: Options
+var _settings: Settings
 
-signal music_volume_changed(value: float)
-signal sound_effects_volume_changed(value: float)
+signal music_volume_changed()
+signal sound_effects_volume_changed()
 
-func get_music_volume_slider() -> HSlider:
-	return $Background/MusicVolumeContainer/Slider as HSlider
-
-func get_sound_effects_volume_slider() -> HSlider:
-	return $Background/SoundEffectsVolumeContainer/Slider as HSlider
-
-func get_options() -> Options:
-	return _options
+func get_settings() -> Settings:
+	return _settings
 
 func _ready() -> void:
-	_options = load('res://ui/menu/options.tres')
-	if _options == null:
-		_options = Options.new()
-		ResourceSaver.save(_options, 'res://ui/menu/options.tres')
-	get_music_volume_slider().value = _options.music_volume
-	get_sound_effects_volume_slider().value = _options.sound_effects_volume
+	_settings = load("res://settings/settings.tres")
+	if _settings == null:
+		_settings = Settings.new()
+		ResourceSaver.save(_settings, "res://settings/settings.tres")
+	($Background/MusicVolumeContainer/Slider as HSlider).value = _settings.music_volume
+	($Background/SoundEffectsVolumeContainer/Slider as HSlider).value = _settings.sound_effects_volume
 
 func _on_music_volume_slider_value_changed(value: float) -> void:
-	_options.music_volume = value
-	music_volume_changed.emit(value)
+	_settings.music_volume = value
+	music_volume_changed.emit()
 
 func _on_sound_effects_slider_value_changed(value: float) -> void:
-	_options.sound_effects_volume = value
-	sound_effects_volume_changed.emit(value)
+	_settings.sound_effects_volume = value
+	sound_effects_volume_changed.emit()
 
 func _on_save_and_close_button_pressed() -> void:
-	ResourceSaver.save(_options, 'res://ui/menu/options.tres')
+	ResourceSaver.save(_settings, "res://settings/settings.tres")
 	visible = not visible
