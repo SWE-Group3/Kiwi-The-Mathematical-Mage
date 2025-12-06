@@ -11,7 +11,8 @@ var math_problem: MathProblem
 var egg_count = 10
 const SAVE_PATH = "user://highscore.bin"
 var highest_wave = 0
-const max_eggs = 10
+const max_eggs = 9
+var tilemap_layer: TileMapLayer = null
 
 func save_highscore(highscore: int) -> void:
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -29,9 +30,14 @@ func load_highscore() -> int:
 		return 0  # Changed from -1 to 0 for wave numbers
 
 func lose_egg():
+	var x = 9
 	egg_count -=1
+	x -= egg_count
 	print("eggs", egg_count)
-	
+	if tilemap_layer:
+		tilemap_layer.set_cell(Vector2i(1,9), 2, Vector2i(x,0), 0)
+	else:
+		push_error("TileMapLayer is not assigned!")	#tilemap.set_cell(0, Vector2i(1, 9), 2, Vector2i(0, 0))
 	if egg_count <= 0:
 		game_over()
 		
