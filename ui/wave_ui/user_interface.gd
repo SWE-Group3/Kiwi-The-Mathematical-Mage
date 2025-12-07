@@ -48,7 +48,6 @@ func _on_mana_generation(mana: float):
 	current_mana += mana
 	$BottomHUD/ResourceBarContainer/ManaBar.value = current_mana
 	$BottomHUD/ResourceBarContainer/ManaLabel.text = "Mana: %d" % [current_mana]
-	# Enable spells if we have enough total mana
 	_update_spell_buttons()
 
 func _on_mana_use(mana: float):
