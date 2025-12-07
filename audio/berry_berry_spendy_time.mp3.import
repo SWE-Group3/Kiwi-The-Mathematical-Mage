@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/berry_berry_spendy_time.mp3-2f64e7cdfc299d8ca
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0.0
 bpm=0.0
 beat_count=0

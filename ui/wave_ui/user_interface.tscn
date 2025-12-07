@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b70kgle12qbtf"]
+[gd_scene load_steps=16 format=3 uid="uid://b70kgle12qbtf"]
 
 [ext_resource type="Texture2D" uid="uid://catgncy65dwol" path="res://art/tree_background.jpg" id="1"]
 [ext_resource type="Script" uid="uid://c7r0acxyw82o4" path="res://ui/wave_ui/user_interface.gd" id="2"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cgkj3ydnksxti" path="res://ui/pause_menu/pause_menu.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://bjpat7klvkpwy" path="res://art/charge_card.png" id="7_q287o"]
 [ext_resource type="PackedScene" uid="uid://b33tyie7nt1ll" path="res://ui/upgrade_menu/upgrade_menu.tscn" id="8"]
+[ext_resource type="AudioStream" uid="uid://c14rfh7sw7acd" path="res://audio/berry_berry_spendy_time.mp3" id="11_ngx6g"]
+[ext_resource type="AudioStream" uid="uid://dlnb8chqfgk4v" path="res://audio/fighty_fighty_kiwi.mp3" id="12_dxkbc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5kf5"]
 bg_color = Color(0, 0, 0, 1)
@@ -228,6 +230,13 @@ visible = false
 
 [node name="UpgradeMenu" parent="." instance=ExtResource("8")]
 visible = false
+
+[node name="PreWaveMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ngx6g")
+autoplay = true
+
+[node name="WaveMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_dxkbc")
 
 [connection signal="pressed" from="TopHUD/PauseButton" to="PauseMenu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="BottomHUD/UpgradesButton" to="UpgradeMenu" method="show"]

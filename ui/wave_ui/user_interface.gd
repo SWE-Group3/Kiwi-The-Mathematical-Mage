@@ -23,6 +23,8 @@ func _on_start_wave_button_pressed() -> void:
 	$BottomHUD/UpgradesButton.hide()
 	$BottomHUD/ProblemContainer.show()
 	$BottomHUD/ProblemBackground.show()
+	$PreWaveMusic.stop()
+	$WaveMusic.play()
 	GameController.start_wave()
 
 func _on_wave_completed(_wave: int):
@@ -30,6 +32,8 @@ func _on_wave_completed(_wave: int):
 	$BottomHUD/UpgradesButton.show()
 	$BottomHUD/ProblemContainer.hide()
 	$BottomHUD/ProblemBackground.hide()
+	$PreWaveMusic.play()
+	$WaveMusic.stop()
 	$ManaGenerator.stop()
 
 func _on_mana_generation(mana: float):
