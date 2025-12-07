@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@export var max_mana: float = 10.0
+@export var max_mana: float = 20.0
 var current_mana: float = 0.0
 var game
 var problem

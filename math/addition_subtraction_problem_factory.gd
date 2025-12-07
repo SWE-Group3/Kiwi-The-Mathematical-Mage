@@ -35,7 +35,7 @@ static func _add_subtract_integers_problem(difficulty: int, operator: String) ->
 			right = temp
 		answer = left - right
 	var question: String = "%d %s %d = ?" % [left, operator, right]
-	var mana_reward: int = 5 * (max_digits - 1);
+	var mana_reward: int = 2 * max_digits + 1;
 	return WholeNumberProblem.new(question, answer, mana_reward)
 
 static func _add_subtract_fractions_problem(difficulty: int, operator: String) -> MathProblem:
@@ -65,7 +65,7 @@ static func _add_subtract_fractions_problem(difficulty: int, operator: String) -
 		else:
 			numerator_answer = numerator1 - numerator2
 		# These problems are all around the same difficulty.
-		var mana_reward: int = 25 
+		var mana_reward: int = 5 
 		return MixedNumberProblem.new(question, numerator_answer, denominator, mana_reward)
 	else:
 		if operator == '-' and numerator1 < numerator2:
@@ -78,5 +78,5 @@ static func _add_subtract_fractions_problem(difficulty: int, operator: String) -
 		else:
 			numerator_answer = numerator1 - numerator2
 		# These problems are all around the same difficulty.
-		var mana_reward = 10 
+		var mana_reward = 4 
 		return WholeNumberProblem.new(question, numerator_answer, mana_reward)

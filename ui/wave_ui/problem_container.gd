@@ -3,6 +3,7 @@ extends VBoxContainer
 signal mana_generated(float)
 
 func _ready() -> void:
+	GameController.wave_started.connect(_on_wave_start)
 	_focus_answer_box()
 	$FeedbackLabel.visible = false
 	generate_problem()
@@ -11,7 +12,11 @@ func generate_problem() -> void:
 	GameController.generate_math_problem()
 	$ProblemLabel.text = GameController.math_problem.question
 	$AnswerTextField.text = ""
+	
 	_focus_answer_box()
+
+func _on_wave_start(_wave: int) -> void:
+	generate_problem()
 
 func _on_submit_button_pressed() -> void:
 	if GameController.math_problem.verify_answer($AnswerTextField.text):
