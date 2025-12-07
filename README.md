@@ -63,10 +63,6 @@ addition, the game will not accept answers whose numerators are greater than the
 as it is expecting the answer to be entered as a mixed number. When in doubt, prefer entering mixed
 numbers over proper fractions for such problems.
 
-There are also some balancing quirks when it comes to addition and subtraction problems. Some simple
-problems give very little mana compared to more complex problems. This is moreso a issue during
-earlier waves, where math problem generation is skewed towards simpler problems.
-
 ## Acknowledgments
 
 * Built using Godot Engine
