@@ -42,6 +42,7 @@ func _on_mana_generation(mana: float):
 	current_mana = $BottomHUD/ResourceBarContainer/ManaBar.value
 	current_mana += mana
 	$BottomHUD/ResourceBarContainer/ManaBar.value = current_mana
+	$BottomHUD/ResourceBarContainer/ManaLabel.text = "Mana: %d" % [current_mana]
 	# Enable spells if we have enough total mana
 	$BottomHUD/SpellContainer/FireSpellButton.disabled = current_mana < SpellManager.spells["Fire"].cost
 	$BottomHUD/SpellContainer/IceSpellButton.disabled = current_mana < SpellManager.spells["Ice"].cost
