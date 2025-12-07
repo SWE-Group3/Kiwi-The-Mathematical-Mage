@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgkj3ydnksxti"]
+[gd_scene load_steps=5 format=3 uid="uid://cgkj3ydnksxti"]
 
 [ext_resource type="Script" uid="uid://oiqhei2f8poa" path="res://ui/pause_menu/pause_menu.gd" id="1_qb7bn"]
 [ext_resource type="Shader" uid="uid://cda0eor1qtote" path="res://ui/blur.gdshader" id="2_nwcfo"]
+[ext_resource type="PackedScene" uid="uid://bugep6k2bkti2" path="res://ui/options_menu/options_menu.tscn" id="3_le02u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nwcfo"]
 shader = ExtResource("2_nwcfo")
@@ -72,6 +73,10 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
 text = "Exit"
 
+[node name="OptionsMenu" parent="." instance=ExtResource("3_le02u")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="ButtonContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="ButtonContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/OptionsButton" to="OptionsMenu" method="show"]
 [connection signal="pressed" from="ButtonContainer/ExitButton" to="." method="_on_exit_button_pressed"]
