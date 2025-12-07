@@ -69,10 +69,14 @@ earlier waves, where math problem generation is skewed towards simpler problems.
 
 ## Acknowledgments
 
-1. Built using Godot Engine
-2. Main menu background image by ChatGPT
-3. Music by Lily Grippo
-4. Kiwi blast sound effect by nameless kiwi bird
+* Built using Godot Engine
+* Main menu background image by ChatGPT
+* Music by Lily Grippo
+* Kiwi blast sound effect by nameless kiwi bird
+
+## Website Link
+
+https://swe-group3.github.io/KiwiTheMathematicalMageWebsite/
 
 ## License
 
