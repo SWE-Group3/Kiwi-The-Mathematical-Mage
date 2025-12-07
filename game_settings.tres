@@ -1,8 +1,6 @@
-[gd_resource type="Resource" script_class="GameSettings" load_steps=2 format=3 uid="uid://tkv036yxm46n"]
+[gd_resource type="Resource" script_class="GameSettings" load_steps=2 format=3]
 
-[ext_resource type="Script" uid="uid://cqk1w1c7h17qa" path="res://game_settings.gd" id="1_pynj7"]
+[ext_resource type="Script" path="res://game_settings.gd" id="1_pynj7"]
 
 [resource]
 script = ExtResource("1_pynj7")
-music_volume = 0.6
-sound_effects_volume = 0.6
