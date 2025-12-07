@@ -25,7 +25,6 @@ static func _add_subtract_integers_problem(difficulty: int, operator: String) ->
 	var upper := int(pow(10.0, max_digits)) - 1
 	var left: int = randi_range(0, upper)
 	var right: int = randi_range(0, upper)
-	var question: String = "%d %s %d = ?" % [left, operator, right]
 	var answer: int
 	if operator == "+":
 		answer = left + right
@@ -35,6 +34,7 @@ static func _add_subtract_integers_problem(difficulty: int, operator: String) ->
 			left = right
 			right = temp
 		answer = left - right
+	var question: String = "%d %s %d = ?" % [left, operator, right]
 	var mana_reward: int = 5 * (max_digits - 1);
 	return WholeNumberProblem.new(question, answer, mana_reward)
 
