@@ -35,6 +35,7 @@ func _on_wave_completed(_wave: int):
 	$PreWaveMusic.play()
 	$WaveMusic.stop()
 	$ManaGenerator.stop()
+	$UpgradeMenu/TitleLabel.text = "Upgrades\nBerry Count: %d" % [GameController.berry_count]
 
 func _on_mana_generation(mana: float):
 	current_mana = $BottomHUD/ResourceBarContainer/ManaBar.value

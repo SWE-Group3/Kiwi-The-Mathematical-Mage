@@ -16,6 +16,6 @@ func _on_upgrade_requested(sender: UpgradeButton) -> void:
 		_:
 			push_error("Invalid Property!")
 	GameController.berry_count -= 1
-	$TitleLabel.text = "Upgrades"
+	$TitleLabel.text = "Upgrades\nBerry Count: %d" % [GameController.berry_count]
 	sender.disabled = true
 	prints(sender.spell_name, sender.property_name)
