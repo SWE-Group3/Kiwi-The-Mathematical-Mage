@@ -26,9 +26,11 @@ func _on_start_wave_button_pressed() -> void:
 	$BottomHUD/ProblemBackground.show()
 	$IntermissionMusic.stop()
 	$WaveMusic.play()
+	_update_spell_buttons()
 	GameController.start_wave()
 
 func _on_wave_completed(_wave: int):
+	SpellManager.selected_spell = null
 	$BottomHUD/StartWaveButton.show()
 	$BottomHUD/UpgradesButton.show()
 	$BottomHUD/ProblemContainer.hide()
@@ -36,6 +38,9 @@ func _on_wave_completed(_wave: int):
 	$IntermissionMusic.play()
 	$WaveMusic.stop()
 	$ManaGenerator.stop()
+	$BottomHUD/SpellContainer/FireSpellButton.disabled = true
+	$BottomHUD/SpellContainer/IceSpellButton.disabled = true
+	$BottomHUD/SpellContainer/LightningSpellButton.disabled = true
 	$UpgradeMenu/TitleLabel.text = "Upgrades\nBerry Count: %d" % [GameController.berry_count]
 
 func _on_mana_generation(mana: float):
@@ -44,14 +49,15 @@ func _on_mana_generation(mana: float):
 	$BottomHUD/ResourceBarContainer/ManaBar.value = current_mana
 	$BottomHUD/ResourceBarContainer/ManaLabel.text = "Mana: %d" % [current_mana]
 	# Enable spells if we have enough total mana
-	$BottomHUD/SpellContainer/FireSpellButton.disabled = current_mana < SpellManager.spells["Fire"].cost
-	$BottomHUD/SpellContainer/IceSpellButton.disabled = current_mana < SpellManager.spells["Ice"].cost
-	$BottomHUD/SpellContainer/LightningSpellButton.disabled = current_mana < SpellManager.spells["Lightning"].cost
+	_update_spell_buttons()
 
 func _on_mana_use(mana: float):
 	current_mana = $BottomHUD/ResourceBarContainer/ManaBar.value
 	current_mana -= mana
 	$BottomHUD/ResourceBarContainer/ManaBar.value = current_mana
+	_update_spell_buttons()
+
+func _update_spell_buttons():
 	# Enable spells if we have enough total mana
 	$BottomHUD/SpellContainer/FireSpellButton.disabled = current_mana < SpellManager.spells["Fire"].cost
 	$BottomHUD/SpellContainer/IceSpellButton.disabled = current_mana < SpellManager.spells["Ice"].cost
