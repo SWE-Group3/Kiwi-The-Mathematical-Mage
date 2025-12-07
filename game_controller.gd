@@ -9,7 +9,7 @@ var settings: GameSettings
 var save: GameSave
 var math_problem_factory: MathProblemFactory
 var math_problem: MathProblem
-var tilemap_layer: TileMapLayer
+var tile_map_layer: TileMapLayer
 var wave_number: int
 var berry_count: int
 var enemies_alive: int
@@ -49,9 +49,9 @@ func on_enemy_reached_end(damage: int):
 	# Egg was consumed if true.
 	if egg_health <= 0:
 		egg_count -= 1
-		if tilemap_layer == null:
+		if tile_map_layer == null:
 			push_error("TileMapLayer is not assigned!")
-		tilemap_layer.set_cell(Vector2i(1, 9), 2, Vector2i((egg_count - 1) * MAX_EGG_HEALTH + egg_health, 0), 0)
+		tile_map_layer.set_cell(Vector2i(1, 9), 2, Vector2i((egg_count - 1) * MAX_EGG_HEALTH + egg_health, 0), 0)
 		# Game over if true.
 		if egg_count <= 0:
 			# New high score if true.

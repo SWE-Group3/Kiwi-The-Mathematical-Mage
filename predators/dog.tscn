@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://3pvfhqelk7to"]
+[gd_scene load_steps=6 format=3 uid="uid://3pvfhqelk7to"]
 
-[ext_resource type="Script" uid="uid://bno6n51sjd8rw" path="res://predators/dog/dog.gd" id="1_kb3ao"]
 [ext_resource type="Texture2D" uid="uid://c3b0lecmo310u" path="res://art/dog.png" id="2_kb3ao"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ptela"]
@@ -39,7 +38,6 @@ animations = [{
 size = Vector2(39, 27)
 
 [node name="Dog" type="Area2D"]
-script = ExtResource("1_kb3ao")
 metadata/_edit_horizontal_guides_ = [187.0]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

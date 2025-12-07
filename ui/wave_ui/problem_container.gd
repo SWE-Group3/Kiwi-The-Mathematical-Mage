@@ -2,8 +2,6 @@ extends VBoxContainer
 
 signal mana_generated(float)
 
-
-
 func _ready() -> void:
 	_focus_answer_box()
 	$FeedbackLabel.visible = false

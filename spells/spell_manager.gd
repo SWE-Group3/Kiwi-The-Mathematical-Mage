@@ -1,10 +1,5 @@
 extends Node
 
-#### TO DO
-### Add to the spells so they have a mana cost and subtract from the mana pool when 
-### they are cast
-###
-
 const EFFECT_DURATION = 3.0  # All effects last 3 seconds
 
 var spells: Dictionary[String, Spell]
@@ -12,17 +7,17 @@ var selected_spell: Spell = null # Currently selected spell
 
 signal mana_used(float)
 
-func select_spell(spell_id: String):
-	if spell_id in spells:
-		selected_spell = spells[spell_id]
-		print("Selected spell: ", spell_id)
+func select_spell(spell_name: String):
+	if spell_name in spells:
+		selected_spell = spells[spell_name]
+		prints("Selected spell:", spell_name)
 	else:
-		print("Invalid spell ID: ", spell_id)
+		prints("Invalid spell ID:", spell_name)
 
 func cast_spell_at(position: Vector2):
 	if selected_spell == null:
 		return
-	print("Casting ", selected_spell.name, " at ", position)
+	prints("Casting", selected_spell.name, "at", position)
 	mana_used.emit(selected_spell.cost)
 	# Create visual effect
 	create_spell_effect(position)
@@ -45,28 +40,13 @@ func create_spell_effect(position: Vector2):
 	var tex_size = sprite.texture.get_size()
 	var target_size = selected_spell.radius * 2
 	var scale_factor = target_size / tex_size.x  # assuming square image
-	
 	sprite.scale = Vector2(scale_factor, scale_factor)
 	sprite.modulate.a = 0.7
 	get_tree().root.add_child(sprite)
-
 	# --- ANIMATE ---
 	var tween = create_tween()
 	tween.tween_property(sprite, "modulate:a", 0.0, 0.5)
 	tween.tween_callback(sprite.queue_free)
-	#var effect = TextureRect.new()
-	#effect.size = Vector2(spell["radius"] * 2, spell["radius"] * 2)
-	#effect.position = pos - effect.size / 2
-	#effect.color = spell["color"]
-	#effect.color.a = 0.5
-	#
-	## Add to scene
-	#get_tree().root.add_child(effect)
-	#
-	## Animate and remove
-	#var tween = create_tween()
-	#tween.tween_property(effect, "modulate:a", 0.0, 0.5)
-	#tween.tween_callback(effect.queue_free)
 
 func deal_damage_in_radius(position: Vector2, radius: int, damage: int):
 	# Get all enemies in the "enemies" group

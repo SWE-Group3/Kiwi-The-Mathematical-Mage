@@ -6,20 +6,8 @@ var enemiesToSpawn
 signal mana_generated(float)
 
 func _ready() -> void:
-	GameController.tilemap_layer = $TileMapLayer  # assign the TileMap node
+	GameController.tile_map_layer = $TileMapLayer  # assign the TileMap node
 	randomize()
-
-func _on_spell_1_pressed() -> void:
-	SpellManager.select_spell("Fire")  # Changed
-	print("Casting Spell 1")
-
-func _on_spell_2_pressed() -> void:
-	SpellManager.select_spell("Ice")  # Changed
-	print("Casting Spell 2")
-
-func _on_spell_3_pressed() -> void:
-	SpellManager.select_spell("Lightning")  # Changed
-	print("Casting Spell 3")
 
 #takes in a number of spawn points, loops till there are no more points
 #and returns how many enemies where spawned and the list of enemies to spawn
