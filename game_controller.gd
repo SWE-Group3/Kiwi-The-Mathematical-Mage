@@ -59,7 +59,7 @@ func on_enemy_reached_end(damage: int):
 				save.high_score = wave_number
 				ResourceSaver.save(save, SAVE_PATH)
 				print("New high score!")
-			get_tree().change_scene_to_file("res://ui/menu/main_menu.tscn")
+			get_tree().change_scene_to_file("res://ui/main_menu/main_menu.tscn")
 		# Roll in next egg.
 		egg_health = MAX_EGG_HEALTH
 	if enemies_alive <= 0:
