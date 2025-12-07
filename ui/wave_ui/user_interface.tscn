@@ -251,6 +251,7 @@ parameters/looping = true
 [connection signal="pressed" from="TopHUD/PauseButton" to="PauseMenu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="BottomHUD/UpgradesButton" to="UpgradeMenu" method="show"]
 [connection signal="pressed" from="BottomHUD/StartWaveButton" to="." method="_on_start_wave_button_pressed"]
+[connection signal="pressed" from="BottomHUD/ProblemContainer/EnterButton" to="BottomHUD/ProblemContainer" method="_on_submit_button_pressed"]
 [connection signal="pressed" from="BottomHUD/SpellContainer/FireSpellButton" to="." method="_on_spell_button_pressed" binds= ["Fire"]]
 [connection signal="pressed" from="BottomHUD/SpellContainer/IceSpellButton" to="." method="_on_spell_button_pressed" binds= ["Ice"]]
 [connection signal="pressed" from="BottomHUD/SpellContainer/LightningSpellButton" to="." method="_on_spell_button_pressed" binds= ["Lightning"]]
