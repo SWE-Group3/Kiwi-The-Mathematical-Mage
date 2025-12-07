@@ -14,14 +14,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4gkdq")
 
-[node name="ScoreLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 44.0
-offset_top = 44.0
-offset_right = 329.0
-offset_bottom = 218.0
-theme_override_font_sizes/font_size = 24
-
 [node name="BackgroundTexture" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -32,6 +24,14 @@ grow_vertical = 2
 texture = ExtResource("2_yc8k7")
 expand_mode = 5
 stretch_mode = 5
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 44.0
+offset_right = 329.0
+offset_bottom = 218.0
+theme_override_font_sizes/font_size = 24
 
 [node name="MainButtonContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
