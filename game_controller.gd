@@ -28,12 +28,12 @@ func generate_math_problem():
 	math_problem = math_problem_factory.generate(get_difficulty());
 
 func start_wave() -> void:
-	var game_node = get_node("/root/WaveController")
+	var wave_controller = get_node("/root/WaveController")
 	wave_started.emit(wave_number)
 	var spawn_points: int = wave_number * 5
-	var results = game_node.pick_enemies(spawn_points)
+	var results = wave_controller.pick_enemies(spawn_points)
 	enemies_alive = results.count
-	game_node.spawn_enemies(results.list)
+	wave_controller.spawn_enemies(results.list)
 
 func on_enemy_death():
 	enemies_alive -= 1
@@ -51,7 +51,7 @@ func on_enemy_reached_end(damage: int):
 		egg_count -= 1
 		if tilemap_layer == null:
 			push_error("TileMapLayer is not assigned!")
-		tilemap_layer.set_cell(Vector2i(1, 9), 2, Vector2i(MAX_EGG_COUNT - egg_count, 0), 0)
+		tilemap_layer.set_cell(Vector2i(1, 9), 2, Vector2i((egg_count - 1) * MAX_EGG_HEALTH + egg_health, 0), 0)
 		# Game over if true.
 		if egg_count <= 0:
 			# New high score if true.

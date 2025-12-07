@@ -35,15 +35,15 @@ func pick_enemies(points: int) -> Dictionary:
 			1: # stoats
 				cost = 1 # cost of one stoat
 				if points_left >= cost: # if can buy then buy
-					enemy_scene = preload("res://predators/stoat/stoat_path_follow.tscn") # loads the stoat scene in 
+					enemy_scene = preload("res://predators/stoat_path_follow.tscn") # loads the stoat scene in 
 			2: # cats
 				cost = 12 # cost of one cat
 				if points_left >= cost: # if can buy then buy
-					enemy_scene = preload("res://predators/cat/cat_path_follow.tscn") # loads the cat scene in
+					enemy_scene = preload("res://predators/cat_path_follow.tscn") # loads the cat scene in
 			3: # dogs
 				cost = 24 # cost of one dog
 				if points_left >= cost: # if can buy then buy
-					enemy_scene = preload("res://predators/dog/dog_path_follow.tscn") # loads the dog scene in
+					enemy_scene = preload("res://predators/dog_path_follow.tscn") # loads the dog scene in
 			_: # default
 				print("no enemy chosen")
 		# Add to the list

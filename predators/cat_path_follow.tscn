@@ -7,6 +7,8 @@
 rotates = false
 loop = false
 script = ExtResource("1_lcpm7")
+damage = 2
 speed = 50.0
 
 [node name="Cat" parent="." instance=ExtResource("2_lcpm7")]
+script = null

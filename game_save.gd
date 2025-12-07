@@ -1,3 +1,3 @@
 class_name GameSave extends Resource
 
-var high_score: int = 0
+@export var high_score: int = 0
