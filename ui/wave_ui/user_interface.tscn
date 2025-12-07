@@ -234,12 +234,16 @@ visible = false
 [node name="UpgradeMenu" parent="." instance=ExtResource("8")]
 visible = false
 
-[node name="PreWaveMusic" type="AudioStreamPlayer" parent="."]
+[node name="IntermissionMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("11_ngx6g")
 autoplay = true
+parameters/looping = true
 
 [node name="WaveMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("12_dxkbc")
+parameters/looping = true
 
 [connection signal="pressed" from="TopHUD/PauseButton" to="PauseMenu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="BottomHUD/UpgradesButton" to="UpgradeMenu" method="show"]

@@ -13,6 +13,7 @@ func _ready() -> void:
 	SpellManager.mana_used.connect(_on_mana_use)
 	game.mana_generated.connect(_on_mana_generation)
 	problem.mana_generated.connect(_on_mana_generation)
+	$PauseMenu/OptionsMenu.music_volume_changed.connect(_on_music_volume_changed)
  
 func _on_start_wave(wave: int) -> void:
 	$ManaGenerator.start()
@@ -23,7 +24,7 @@ func _on_start_wave_button_pressed() -> void:
 	$BottomHUD/UpgradesButton.hide()
 	$BottomHUD/ProblemContainer.show()
 	$BottomHUD/ProblemBackground.show()
-	$PreWaveMusic.stop()
+	$IntermissionMusic.stop()
 	$WaveMusic.play()
 	GameController.start_wave()
 
@@ -32,7 +33,7 @@ func _on_wave_completed(_wave: int):
 	$BottomHUD/UpgradesButton.show()
 	$BottomHUD/ProblemContainer.hide()
 	$BottomHUD/ProblemBackground.hide()
-	$PreWaveMusic.play()
+	$IntermissionMusic.play()
 	$WaveMusic.stop()
 	$ManaGenerator.stop()
 	$UpgradeMenu/TitleLabel.text = "Upgrades\nBerry Count: %d" % [GameController.berry_count]
@@ -57,3 +58,8 @@ func _on_mana_use(mana: float):
 
 func _on_spell_button_pressed(spell_name: String) -> void:
 	SpellManager.select_spell(spell_name)
+
+func _on_music_volume_changed() -> void:
+	var volume: float = GameController.settings.music_volume
+	$IntermissionMusic.volume_linear = volume
+	$WaveMusic.volume_linear = volume
