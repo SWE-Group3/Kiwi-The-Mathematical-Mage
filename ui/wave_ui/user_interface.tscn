@@ -111,6 +111,7 @@ grow_vertical = 0
 
 [node name="HealthLabel" type="Label" parent="BottomHUD/ResourceBarContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 16
 text = "Total Egg Health:"
 
@@ -123,8 +124,9 @@ script = ExtResource("4_kb75b")
 
 [node name="ManaLabel" type="Label" parent="BottomHUD/ResourceBarContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 16
-text = "Mana:"
+text = "Mana: 0"
 
 [node name="ManaBar" type="ProgressBar" parent="BottomHUD/ResourceBarContainer"]
 layout_mode = 2
