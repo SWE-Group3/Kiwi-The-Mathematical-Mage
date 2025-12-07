@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GameSettings" load_steps=2 format=3 uid="uid://cs1rpkxwqdanu"]
+[gd_resource type="Resource" script_class="GameSettings" load_steps=2 format=3 uid="uid://dyspnc2vwiovm"]
 
 [ext_resource type="Script" uid="uid://cqk1w1c7h17qa" path="res://game_settings.gd" id="1_pynj7"]
 

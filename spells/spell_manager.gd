@@ -62,13 +62,13 @@ func apply_burn_effect(position: Vector2):
 	var enemies = get_enemies_in_radius(position, selected_spell.radius)
 	for enemy in enemies:
 		if enemy.has_method("apply_status"):
-			enemy.apply_status("Burn", selected_spell.damage, EFFECT_DURATION)
+			enemy.apply_status("Burn", selected_spell.damage, selected_spell.potency, EFFECT_DURATION)
 
 func apply_freeze_effect(position: Vector2):
 	var enemies = get_enemies_in_radius(position, selected_spell.radius)
 	for enemy in enemies:
 		if enemy.has_method("apply_status"):
-			enemy.apply_status("Freeze", selected_spell.damage, EFFECT_DURATION)
+			enemy.apply_status("Freeze", selected_spell.damage, selected_spell.potency, EFFECT_DURATION)
 
 func apply_charge_effect(position: Vector2):
 	var directEnemies = get_enemies_in_radius(position, selected_spell.radius)
@@ -76,10 +76,10 @@ func apply_charge_effect(position: Vector2):
 	for enemy in chainEnemies:
 		if enemy in directEnemies:
 			if enemy.has_method("apply_status"):
-				enemy.apply_status("Direct Shock", selected_spell.damage, EFFECT_DURATION)  # Instant damage
+				enemy.apply_status("Direct Shock", selected_spell.damage, selected_spell.potency, EFFECT_DURATION)  # Instant damage
 		else:
 			if enemy.has_method("apply_status"):
-				enemy.apply_status("Shock", selected_spell.damage, EFFECT_DURATION)  # Instant damage
+				enemy.apply_status("Shock", selected_spell.damage, selected_spell.potency, EFFECT_DURATION)  # Instant damage
 
 func get_enemies_in_radius(pos: Vector2, radius: float) -> Array:
 	var enemies_in_range = []

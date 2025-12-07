@@ -97,7 +97,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Math problems are shown in the bottom of the screen when the game starts. Enter the correct answer to earn more mana so that you can cast more spells! P.S. Enter either whole numbers like 670 or mixed numbers like 1 1/2 as answers."
+text = "Math problems are shown in the bottom of the screen when the game starts. Enter the correct answer to earn more mana so that you can cast more spells! P.S. Enter whole numbers like 670, fractions like 1/2, and mixed numbers like 1 1/2 as answers."
 horizontal_alignment = 1
 autowrap_mode = 2
 

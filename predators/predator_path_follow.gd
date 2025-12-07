@@ -3,9 +3,6 @@ extends PathFollow2D
 @export var strength: int = 1
 @export var speed: float = 100.0
 @export var health: int = 100
-signal enemy_died
-signal reached_end
-
 var base_speed: float
 var current_speed: float
 var is_frozen = false
@@ -14,6 +11,9 @@ var is_charged = false
 var burn_damage = 0
 var burn_timer = 0.0
 var charge_timer = 0.0
+
+signal enemy_died
+signal reached_end
 
 func _ready():
 	add_to_group("enemies")
@@ -30,7 +30,6 @@ func _process(delta):
 		if burn_timer <= 0:
 			is_burning = false
 			modulate = Color.WHITE
-			
 	# Handle charge color effect
 	if charge_timer > 0:
 		charge_timer -= delta
@@ -57,18 +56,18 @@ func die():
 	queue_free()
 
 # Unified status effect function
-func apply_status(status_type: String, damage: int, duration: float):
+func apply_status(status_type: String, damage: int, potency: float, duration: float):
 	match status_type:
 		"Burn":
-			apply_burn(damage, duration)
+			apply_burn(damage, duration * potency)
 		"Freeze":
-			apply_freeze(duration)
+			apply_freeze(duration * potency)
 		"Shock":
 			take_damage(damage - 15)  # Instant damage
-			apply_charge(duration)
+			apply_charge(duration * potency)
 		"Direct Shock":
 			take_damage(damage)
-			apply_charge(duration) 
+			apply_charge(duration * potency) 
 		_:
 			push_error("Unknown status: ", status_type)
 

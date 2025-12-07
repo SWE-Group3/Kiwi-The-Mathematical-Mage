@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://b70kgle12qbtf"]
+[gd_scene load_steps=17 format=3 uid="uid://b70kgle12qbtf"]
 
 [ext_resource type="Texture2D" uid="uid://catgncy65dwol" path="res://art/tree_background.jpg" id="1"]
 [ext_resource type="Script" uid="uid://c7r0acxyw82o4" path="res://ui/wave_ui/user_interface.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://c8h5s5lyy55lt" path="res://ui/how_to_play_guide/how_to_play_guide.tscn" id="2_i4jma"]
 [ext_resource type="Texture2D" uid="uid://vkh811kit38i" path="res://art/wood_background.jpg" id="3"]
 [ext_resource type="Script" uid="uid://cywdjwc3avenj" path="res://ui/wave_ui/problem_container.gd" id="4"]
 [ext_resource type="Script" uid="uid://bslky8v4pe2wj" path="res://ui/wave_ui/health_bar.gd" id="4_kb75b"]
@@ -224,6 +225,8 @@ texture_filter = 1
 layout_mode = 2
 disabled = true
 icon = ExtResource("7_q287o")
+
+[node name="HowToPlayGuide" parent="." instance=ExtResource("2_i4jma")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("7")]
 visible = false
