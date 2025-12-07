@@ -1,6 +1,6 @@
 extends PathFollow2D
 
-@export var damage: int = 1
+@export var strength: int = 1
 @export var speed: float = 100.0
 @export var health: int = 100
 signal enemy_died
@@ -42,8 +42,8 @@ func _physics_process(delta):
 	if not is_frozen:
 		progress += current_speed * delta
 	if progress_ratio >= 1.0:
-			reached_end.emit(damage)
-			queue_free()
+		reached_end.emit(strength)
+		queue_free()
 
 func take_damage(amount: int):
 	health -= amount

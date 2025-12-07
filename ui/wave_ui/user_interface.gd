@@ -9,7 +9,7 @@ func _ready() -> void:
 	GameController.wave_started.connect(_on_start_wave)
 	GameController.wave_completed.connect(_on_wave_completed)
 	game = get_node("/root/WaveController")
-	problem = get_node("BottomHUD/ProblemContainer")
+	problem = $BottomHUD/ProblemContainer
 	SpellManager.mana_used.connect(_on_mana_use)
 	game.mana_generated.connect(_on_mana_generation)
 	problem.mana_generated.connect(_on_mana_generation)
@@ -32,9 +32,9 @@ func _on_wave_completed(_wave: int):
 	$BottomHUD/ProblemBackground.hide()
 	$ManaGenerator.stop()
 
-func _on_mana_generation(_mana: float):
+func _on_mana_generation(mana: float):
 	current_mana = $BottomHUD/ResourceBarContainer/ManaBar.value
-	current_mana += _mana
+	current_mana += mana
 	$BottomHUD/ResourceBarContainer/ManaBar.value = current_mana
 	# Enable spells if we have enough total mana
 	$BottomHUD/SpellContainer/FireSpellButton.disabled = current_mana < SpellManager.spells["Fire"].cost

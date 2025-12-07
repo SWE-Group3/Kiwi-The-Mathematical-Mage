@@ -7,9 +7,8 @@
 rotates = false
 loop = false
 script = ExtResource("1_4xl2x")
-damage = 3
+strength = 3
 speed = 25.0
 health = 125
 
 [node name="Dog" parent="." instance=ExtResource("2_4xl2x")]
-script = null

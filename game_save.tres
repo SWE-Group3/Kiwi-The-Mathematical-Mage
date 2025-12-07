@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="GameSave" load_steps=2 format=3 uid="uid://b5ixk3xo6rj0g"]
+[gd_resource type="Resource" script_class="GameSave" load_steps=2 format=3]
 
-[ext_resource type="Script" uid="uid://djnh8rxevrwh6" path="res://game_save.gd" id="1_0sywv"]
+[ext_resource type="Script" path="res://game_save.gd" id="1_0sywv"]
 
 [resource]
 script = ExtResource("1_0sywv")
+high_score = 2
 metadata/_custom_type_script = "uid://djnh8rxevrwh6"

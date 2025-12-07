@@ -12,7 +12,7 @@ func select_spell(spell_name: String):
 		selected_spell = spells[spell_name]
 		prints("Selected spell:", spell_name)
 	else:
-		prints("Invalid spell ID:", spell_name)
+		prints("Invalid spell:", spell_name)
 
 func cast_spell_at(position: Vector2):
 	if selected_spell == null:
