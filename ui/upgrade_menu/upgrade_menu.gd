@@ -1,7 +1,7 @@
 extends Control
 
 func _on_upgrade_requested(sender: UpgradeButton) -> void:
-	if Global.berry_count == 0:
+	if GameController.berry_count == 0:
 		return
 	var spell: Spell = SpellManager.spells[sender.spell_name]
 	match sender.property_name:
@@ -14,7 +14,8 @@ func _on_upgrade_requested(sender: UpgradeButton) -> void:
 		"Cost":
 			spell.cost -= 1
 		_:
-			print("Invalid Property")
-	Global.berry_count -= 1
+			push_error("Invalid Property!")
+	GameController.berry_count -= 1
+	$TitleLabel.text = "Upgrades"
 	sender.disabled = true
-	print(sender.spell_name, " ", sender.property_name)
+	prints(sender.spell_name, sender.property_name)

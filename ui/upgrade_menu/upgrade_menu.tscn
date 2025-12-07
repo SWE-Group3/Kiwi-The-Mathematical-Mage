@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=3 uid="uid://b33tyie7nt1ll"]
 
-[ext_resource type="Script" uid="uid://bdaw6o5n7sott" path="res://ui/game/upgrade_menu.gd" id="1_cpgeo"]
-[ext_resource type="Shader" uid="uid://cda0eor1qtote" path="res://ui/menu/blur.gdshader" id="1_jgaba"]
+[ext_resource type="Script" uid="uid://bdaw6o5n7sott" path="res://ui/upgrade_menu/upgrade_menu.gd" id="1_cpgeo"]
+[ext_resource type="Shader" uid="uid://cda0eor1qtote" path="res://ui/blur.gdshader" id="1_jgaba"]
 [ext_resource type="Texture2D" uid="uid://cf3nh4knighna" path="res://art/fireball_card.png" id="3_qoy4f"]
 [ext_resource type="Texture2D" uid="uid://d0xb6r8tq5xyi" path="res://art/menu_tile.png" id="4_gi4mh"]
 [ext_resource type="Texture2D" uid="uid://ch0mqb4gbmmul" path="res://art/upgrade_card.png" id="5_h3u4o"]
 [ext_resource type="Texture2D" uid="uid://cpucbm6weds0w" path="res://art/potency_up_card.png" id="6_8sggs"]
 [ext_resource type="Texture2D" uid="uid://jo2yfx6omvad" path="res://art/freeze_card.png" id="6_mgvak"]
 [ext_resource type="Texture2D" uid="uid://bjpat7klvkpwy" path="res://art/charge_card.png" id="7_803m7"]
-[ext_resource type="Script" uid="uid://c8eyewlamcxq3" path="res://ui/game/upgrade_button.gd" id="7_asus3"]
+[ext_resource type="Script" uid="uid://c8eyewlamcxq3" path="res://ui/upgrade_menu/upgrade_button.gd" id="7_asus3"]
 [ext_resource type="Texture2D" uid="uid://bq7ny4keifxpn" path="res://art/damage_up_card.png" id="7_yr7tq"]
 [ext_resource type="Texture2D" uid="uid://6cceamr17wfb" path="res://art/cooldown_down_card.png" id="8_0g1oq"]
 [ext_resource type="Texture2D" uid="uid://ci8xvb0w2640k" path="res://art/cost_down_card.png" id="9_asus3"]
@@ -43,14 +43,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = -304.0
-offset_right = 82.0
-offset_bottom = -259.0
+offset_left = -119.5
+offset_top = -344.0
+offset_right = 119.5
+offset_bottom = -251.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
-text = "Upgrades"
+text = "Upgrades
+Berry Count = 0"
 horizontal_alignment = 1
 
 [node name="SpellCardContainer" type="VBoxContainer" parent="."]

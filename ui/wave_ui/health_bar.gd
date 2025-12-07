@@ -8,5 +8,5 @@ func _process(_delta):
 	update_health()
 
 func update_health():
-	value = Global.get_egg_health_percent()
+	value = GameController.get_egg_health_percent()
 	

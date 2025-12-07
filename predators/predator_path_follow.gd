@@ -1,5 +1,6 @@
 extends PathFollow2D
 
+@export var damage: int = 1
 @export var speed: float = 100.0
 @export var health: int = 100
 signal enemy_died
@@ -36,15 +37,12 @@ func _process(delta):
 		if charge_timer <= 0:
 			is_charged = false
 			modulate = Color.WHITE
-			
-
 
 func _physics_process(delta):
 	if not is_frozen:
 		progress += current_speed * delta
-		
 	if progress_ratio >= 1.0:
-			emit_signal("reached_end")
+			reached_end.emit(damage)
 			queue_free()
 
 func take_damage(amount: int):
@@ -55,7 +53,7 @@ func take_damage(amount: int):
 
 func die():
 	print("Enemy died!")
-	emit_signal("enemy_died")
+	enemy_died.emit()
 	queue_free()
 
 # Unified status effect function
@@ -72,8 +70,8 @@ func apply_status(status_type: String, damage: int, duration: float):
 			take_damage(damage)
 			apply_charge(duration) 
 		_:
-			print("Unknown status: ", status_type)
-			
+			push_error("Unknown status: ", status_type)
+
 func apply_charge(duration: float):
 	is_charged = true
 	charge_timer = duration

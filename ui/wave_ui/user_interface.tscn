@@ -1,15 +1,15 @@
 [gd_scene load_steps=14 format=3 uid="uid://b70kgle12qbtf"]
 
 [ext_resource type="Texture2D" uid="uid://catgncy65dwol" path="res://art/tree_background.jpg" id="1"]
-[ext_resource type="Script" uid="uid://c7r0acxyw82o4" path="res://ui/game/user_interface.gd" id="2"]
+[ext_resource type="Script" uid="uid://c7r0acxyw82o4" path="res://ui/wave_ui/user_interface.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://vkh811kit38i" path="res://art/wood_background.jpg" id="3"]
-[ext_resource type="Script" uid="uid://cywdjwc3avenj" path="res://ui/game/problem_container.gd" id="4"]
-[ext_resource type="Script" uid="uid://bslky8v4pe2wj" path="res://ui/game/health_bar.gd" id="4_kb75b"]
+[ext_resource type="Script" uid="uid://cywdjwc3avenj" path="res://ui/wave_ui/problem_container.gd" id="4"]
+[ext_resource type="Script" uid="uid://bslky8v4pe2wj" path="res://ui/wave_ui/health_bar.gd" id="4_kb75b"]
 [ext_resource type="Texture2D" uid="uid://cf3nh4knighna" path="res://art/fireball_card.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://jo2yfx6omvad" path="res://art/freeze_card.png" id="6_f4522"]
-[ext_resource type="PackedScene" uid="uid://cgkj3ydnksxti" path="res://ui/menu/pause_menu.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://cgkj3ydnksxti" path="res://ui/pause_menu/pause_menu.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://bjpat7klvkpwy" path="res://art/charge_card.png" id="7_q287o"]
-[ext_resource type="PackedScene" uid="uid://b33tyie7nt1ll" path="res://ui/game/upgrade_menu.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://b33tyie7nt1ll" path="res://ui/upgrade_menu/upgrade_menu.tscn" id="8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5kf5"]
 bg_color = Color(0, 0, 0, 1)
@@ -232,6 +232,3 @@ visible = false
 [connection signal="pressed" from="TopHUD/PauseButton" to="PauseMenu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="BottomHUD/UpgradesButton" to="UpgradeMenu" method="show"]
 [connection signal="pressed" from="BottomHUD/StartWaveButton" to="." method="_on_start_wave_button_pressed"]
-[connection signal="pressed" from="BottomHUD/SpellContainer/FireSpellButton" to="." method="_on_spell_button_pressed" binds= ["Fire"]]
-[connection signal="pressed" from="BottomHUD/SpellContainer/IceSpellButton" to="." method="_on_spell_button_pressed" binds= ["Ice"]]
-[connection signal="pressed" from="BottomHUD/SpellContainer/LightningSpellButton" to="." method="_on_spell_button_pressed" binds= ["Lightning"]]

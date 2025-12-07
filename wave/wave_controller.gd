@@ -1,34 +1,26 @@
 extends Node
+
 var selectedSpell := 0
 var enemiesToSpawn
-
-
-@export var burnMana: float = 4.0
-@export var freezeMana: float = 2.0
-@export var chargeMana: float = 5.0
 
 signal mana_generated(float)
 
 func _ready() -> void:
-	Global.tilemap_layer = $TileMapLayer  # assign the TileMap node
+	GameController.tilemap_layer = $TileMapLayer  # assign the TileMap node
 	randomize()
 
-func _on_pause_pressed() -> void:
-	print("Pause Pressed")
-
 func _on_spell_1_pressed() -> void:
-	SpellManager.select_spell("fireball")  # Changed
+	SpellManager.select_spell("Fire")  # Changed
 	print("Casting Spell 1")
 
 func _on_spell_2_pressed() -> void:
-	SpellManager.select_spell("ice_blast")  # Changed
+	SpellManager.select_spell("Ice")  # Changed
 	print("Casting Spell 2")
 
 func _on_spell_3_pressed() -> void:
-	SpellManager.select_spell("lightning")  # Changed
+	SpellManager.select_spell("Lightning")  # Changed
 	print("Casting Spell 3")
 
-	
 #takes in a number of spawn points, loops till there are no more points
 #and returns how many enemies where spawned and the list of enemies to spawn
 func pick_enemies(points: int) -> Dictionary:
@@ -72,8 +64,8 @@ func spawn_enemies(enemies: Array):
 	for enemy in enemies: # gets one enemy from the array
 		var spawn = enemy.instantiate() 
 		
-		spawn.connect("enemy_died", Callable(Global, "on_enemy_death")) # recieves signal on enemy death and calls on_enemy_death function
-		spawn.connect("reached_end", Callable(Global, "on_enemy_reached_end")) # recieves signal when enemy reaches the end of path and calles oon_enemy_reached_end functionn
+		spawn.connect("enemy_died", GameController.on_enemy_death) # recieves signal on enemy death and calls on_enemy_death function
+		spawn.connect("reached_end", GameController.on_enemy_reached_end) # recieves signal when enemy reaches the end of path and calles oon_enemy_reached_end functionn
 		
 		var pickPath = randi_range(1,3) # picks which path to spawn enemy on
 		match pickPath:
