@@ -1,9 +1,6 @@
 extends Node
 
-var selectedSpell := 0
-var enemiesToSpawn
-
-signal mana_generated(float)
+signal mana_generated(mana: float)
 
 func _ready() -> void:
 	GameController.tile_map_layer = $TileMapLayer  # assign the TileMap node
