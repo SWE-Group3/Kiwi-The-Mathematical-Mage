@@ -11,5 +11,5 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 			SpellManager.cast_spell_at(mouse_event.position)
 			# Reset selection (must click button again)
 			SpellManager.selected_spell = null
-			$AudioStreamPlayer.volume_linear = GameController.settings.sound_effects_volume
-			$AudioStreamPlayer.play()
+			$KiwiBlastSoundEffect.volume_linear = GameController.settings.sound_effects_volume
+			$KiwiBlastSoundEffect.play()

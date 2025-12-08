@@ -14,6 +14,7 @@ func _ready() -> void:
 	game.mana_generated.connect(_on_mana_generation)
 	problem.mana_generated.connect(_on_mana_generation)
 	$PauseMenu/OptionsMenu.music_volume_changed.connect(_on_music_volume_changed)
+	_on_music_volume_changed()
  
 func _on_start_wave(wave: int) -> void:
 	$ManaGenerator.start()

@@ -72,7 +72,7 @@ tile_set = ExtResource("3_hve3p")
 collision_enabled = false
 script = ExtResource("4_7jktm")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TileMapLayer"]
+[node name="KiwiBlastSoundEffect" type="AudioStreamPlayer" parent="TileMapLayer"]
 stream = ExtResource("5_a45nn")
 
 [node name="Area2D" type="Area2D" parent="TileMapLayer"]
