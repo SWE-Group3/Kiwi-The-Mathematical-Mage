@@ -63,6 +63,10 @@ addition, the game will not accept answers whose numerators are greater than the
 as it is expecting the answer to be entered as a mixed number. When in doubt, prefer entering mixed
 numbers over proper fractions for such problems.
 
+Spell cooldowns are not implemented within this prototype even though our Software Requirements
+Specification specified them. Although this was done for balancing purposes, it can be imagined that
+spell cooldowns will be implemented when the game undergoes some serious balancing changes.
+
 ## Acknowledgments
 
 * Built using Godot Engine
